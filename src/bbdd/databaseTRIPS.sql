@@ -199,3 +199,31 @@ INSERT INTO keywordsCursos(curso, keywords)
 VALUES (6, 3);
 INSERT INTO keywordsCursos(curso, keywords)
 VALUES (6, 4);
+
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (1, 2, "Curso buenísimo", 5);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (1, 3, "Curso magnífico", 5);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (2, 5, "Desactualizado", 3);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (3, 6, "Curso rebueno", 5);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (5, 6, "Me gustó. Un poco corto", 4);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (4, 1, "Curso bueno", 4);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (4, 3, "Regular", 2);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (6, 4, "Genial",5);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (3, 1, "Muy bueno", 4);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (1, 4, "Interesante", 4);
+INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
+VALUES (6, 2, "Corto", 3);
+
+estudiante INT,
+curso INT,
+descripcion VARCHAR(255),
+valoracion INT,
