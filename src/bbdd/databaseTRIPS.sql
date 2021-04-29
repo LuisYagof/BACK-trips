@@ -222,8 +222,3 @@ INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (1, 4, "Interesante", 4);
 INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (6, 2, "Corto", 3);
-
-estudiante INT,
-curso INT,
-descripcion VARCHAR(255),
-valoracion INT,
