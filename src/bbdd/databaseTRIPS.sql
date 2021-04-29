@@ -133,27 +133,6 @@ VALUES ("Google Ads");
 INSERT INTO keywords(descripcion)
 VALUES ("Facebook Ads");
 
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (1, 1);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (2, 2);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (2, 1);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (2, 5);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (3, 5);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (3, 9);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (4, 8);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (5, 7);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (6, 3);
-INSERT INTO keywordsCursos(curso, keywords)
-VALUES (6, 4);
-
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Fernando Alfaro", "alfarogr@hotmail.com", "password1", "qwerty123+", "Soy un experto en queries", "linkedin.com/alfarogr");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
@@ -185,3 +164,24 @@ VALUES ("Experto en Sketch", "Aprende a usar la herramienta más popular y profe
 INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
 VALUES ("Python + SQLite", "Aprende a programar con clases y objetos, a usar ficheros y bases de datos SQLite, interfaces gráficas y más con Python!", "linkcurso6.com", 6, 100, 14, 0, 6, false, false
 );
+
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (1, 1);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (2, 2);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (2, 1);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (2, 5);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (3, 5);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (3, 9);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (4, 8);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (5, 7);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (6, 3);
+INSERT INTO keywordsCursos(curso, keywords)
+VALUES (6, 4);
