@@ -97,17 +97,17 @@ FOREIGN KEY (curso) REFERENCES cursos(id)
 
 
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Pedro Carbón", "pedrocabron@hotmail.com", "password1", "qwerty123+", "Me superencanta aprender!!", "linkedin.com/pedroca");
+VALUES ("Pedro", "Carbón", "pedrocabron@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Loli Start", "lolistart@hotmail.com", "password1", "qwerty123+", "La reina del UI", "linkedin.com/lolist");
+VALUES ("Loli", "Start", "lolistart@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Rosa Pecosa", "rosapecosa@gmail.com", "password1", "qwerty123+", "Activista de los endpoint", "linkedin.com/rosape");
+VALUES ("Rosa", "Pecosa", "rosapecosa@gmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Carlos Fernández", "carlosfe@hotmail.com", "password1", "qwerty123+", "Soy del clásico SQL.", "linkedin.com/carlosfe");
+VALUES ("Carlos", "Fernández", "carlosfe@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Jesús María de los Santos", "jesusmarisan@gmail.com", "password1", "qwerty123+", "El Dios de la programación", "linkedin.com/jesusmarisa");
+VALUES ("Jesús María", "de los Santos", "jesusmarisan@gmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Lluvia Dorada", "lluviado@hotmail.com", "password1", "qwerty123+", "Brillante en todo lo que se proponga", "linkedin.com/lluviado");
+VALUES ("Lluvia", "Dorada", "lluviado@hotmail.com", "password1", "qwertyn123+");
 
 INSERT INTO categorias(descripcion)
 VALUES ("Desarrollo Web");
