@@ -108,6 +108,31 @@ VALUES ("UX/UI");
 INSERT INTO categorias(descripcion)
 VALUES ("Data Science");
 
+INSERT INTO keywords(descripcion)
+VALUES ("React");
+INSERT INTO keywords(descripcion)
+VALUES ("JavaScript");
+INSERT INTO keywords(descripcion)
+VALUES ("Python");
+INSERT INTO keywords(descripcion)
+VALUES ("SQL");
+INSERT INTO keywords(descripcion)
+VALUES ("MongoDB");
+INSERT INTO keywords(descripcion)
+VALUES ("Figma");
+INSERT INTO keywords(descripcion)
+VALUES ("Sketch");
+INSERT INTO keywords(descripcion)
+VALUES ("Salesforce");
+INSERT INTO keywords(descripcion)
+VALUES ("NodeJS");
+INSERT INTO keywords(descripcion)
+VALUES ("Google Analytics");
+INSERT INTO keywords(descripcion)
+VALUES ("Google Ads");
+INSERT INTO keywords(descripcion)
+VALUES ("Facebook Ads");
+
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Fernando Alfaro", "alfarogr@hotmail.com", "password1", "qwerty123+", "Soy un experto en queries", "linkedin.com/alfarogr");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
@@ -115,7 +140,7 @@ VALUES ("Roberto Borroso", "rborroso@hotmail.com", "password1", "qwerty123+", "S
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Jose Luis", "zellfhirot@hotmail.com", "password1", "qwerty123+", "Soy la máquina de los endpoints", "linkedin.com/zellfhirot");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
-VALUES ("Luis Fernñandez", "luisyagofdez@gmail.com", "password1", "qwerty123+", "React Nativo y bro de todo el mundo", "linkedin.com/luisyagofdez");
+VALUES ("Luis Fernandez", "luisyagofdez@gmail.com", "password1", "qwerty123+", "React Nativo y bro de todo el mundo", "linkedin.com/luisyagofdez");
 
 INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
 VALUES ("React Native: Aplicaciones nativas para IOS y Android", "Aprende React Native desde cero. Usa React Native para construir aplicaciones iOS y Android y profundiza en React Native", "linkcurso1.com", 1, 150, 13, 0, 1, true, false 
