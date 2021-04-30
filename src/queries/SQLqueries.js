@@ -21,10 +21,21 @@ function newTeacher (nombre, email, pass, secret, descripcion, enlace, foto) {
   });
 }
 
+function logStudent (email, pass) {
+  return new Promise((resolve, reject) =>{
+      DB.query(`SELECT * FROM estudiantes WHERE email = "${email}" AND pass = "${pass}";`, (err, result) => {
+          if (err)
+              return reject(err);
+          resolve(result);
+      });
+  });
+}
+
 
 // ---------------------------EXPORTS
 
 module.exports = {
   newStudent,
-  newTeacher
+  newTeacher,
+  logStudent
 };

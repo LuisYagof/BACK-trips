@@ -8,7 +8,7 @@ const cors = require('cors')
 const { createToken, hash, randomString, decodeToken, emailIsValid,
     passIsValid, nameIsValid, mailPassword } = require("../middlewares/middlewares");
 
-const { newStudent, newTeacher } = require("../queries/SQLqueries")
+const { newStudent, newTeacher, logStudent } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -32,7 +32,7 @@ server.post('/newStudent', async (req, res) => {
     if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
         try {
             let random = randomString()
-            const SQLresponse = await newStudent (req.body.nombre, req.body.apellido, req.body.email, hash(req.body.pass), random)
+            const SQLresponse = await newStudent(req.body.nombre, req.body.apellido, req.body.email, hash(req.body.pass), random)
             res.status(200).json({
                 status: 200,
                 ok: true,
@@ -63,7 +63,7 @@ server.post('/newTeacher', async (req, res) => {
     if (emailIsValid(req.body.email) && passIsValid(req.body.pass)) {
         try {
             let random = randomString()
-            const SQLresponse = await newTeacher (req.body.nombre, req.body.email, hash(req.body.pass), random, req.body.descripcion, req.body.enlace, req.body.foto )
+            const SQLresponse = await newTeacher(req.body.nombre, req.body.email, hash(req.body.pass), random, req.body.descripcion, req.body.enlace, req.body.foto)
             res.status(200).json({
                 status: 200,
                 ok: true,
@@ -89,3 +89,37 @@ server.post('/newTeacher', async (req, res) => {
         })
     }
 })
+
+// -------------------------------------------------------------------LOGIN
+
+server.post('/logStudent/:rol', async (req, res) => {
+    if (emailIsValid(req.body.email) && passIsValid(req.body.pass)) {
+        try {
+            const SQLresponse = await logUser(req.body.email, hash(req.body.pass))
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                data: SQLresponse,
+                msg: "Logado correctamente",
+                url: '/',
+                token: await createToken(SQLresponse[0].email, SQLresponse[0].id, SQLresponse[0].secreto, 86400)
+            })
+        } catch (err) {
+            if (err) {
+                res.status(500).json({
+                    status: 500,
+                    ok: false,
+                    data: err,
+                    msg: "Email o contraseña incorrectos"
+                })
+            }
+        }
+    } else {
+        res.status(406).json({
+            status: 406,
+            ok: false,
+            msg: "Email inválido. La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número"
+        })
+    }
+})
+
