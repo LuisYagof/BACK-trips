@@ -73,9 +73,9 @@ descripcion VARCHAR(20)
 CREATE TABLE keywordsCursos(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 curso INT,
-keywords INT,
+keyword INT,
 FOREIGN KEY (curso) REFERENCES cursos(id),
-FOREIGN KEY (keywords) REFERENCES keywords(id)
+FOREIGN KEY (keyword) REFERENCES keywords(id)
 );
 
 -- CREATE TABLE links(
@@ -224,25 +224,25 @@ INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma
 VALUES ("Python + SQLite", "Aprende a programar con clases y objetos, a usar ficheros y bases de datos SQLite, interfaces gráficas y más con Python!", "linkcurso6.com", 6, 100, 14, 0, 6, false, false
 );
 
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (1, 1);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (2, 2);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (2, 1);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (2, 5);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (3, 5);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (3, 9);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (4, 8);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (5, 7);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (6, 3);
-INSERT INTO keywordsCursos(curso, keywords)
+INSERT INTO keywordsCursos(curso, keyword)
 VALUES (6, 4);
 
 INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
@@ -268,24 +268,26 @@ VALUES (1, 4, "Interesante", 4);
 INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (6, 2, "Corto", 3);
 
-INSERT INTO profesiones(descripcion) VALUES ("Full Stack Developer");
-INSERT INTO profesiones(descripcion) VALUES ("Fullstack Developer");
-INSERT INTO profesiones(descripcion) VALUES ("Senior Full Stack Developer");
-INSERT INTO profesiones(descripcion) VALUES ("Junior Full Stack Developer");
-INSERT INTO profesiones(descripcion) VALUES ("Desarrollador Fullstack");
-INSERT INTO profesiones(descripcion) VALUES ("Desarrollador Web");
-INSERT INTO profesiones(descripcion) VALUES ("Frontend Developer");
-INSERT INTO profesiones(descripcion) VALUES ("desarrollador backend");
-INSERT INTO profesiones(descripcion) VALUES ("Backend Developer");
-INSERT INTO profesiones(descripcion) VALUES ("UX Designer");
-INSERT INTO profesiones(descripcion) VALUES ("Web Designer");
-INSERT INTO profesiones(descripcion) VALUES ("UI Designer");
-INSERT INTO profesiones(descripcion) VALUES ("UX UI Designer");
-INSERT INTO profesiones(descripcion) VALUES ("junior web developer");
-INSERT INTO profesiones(descripcion) VALUES ("senior web developer");
-INSERT INTO profesiones(descripcion) VALUES ("Data Scientist");
-INSERT INTO profesiones(descripcion) VALUES ("Data Analyst");
-INSERT INTO profesiones(descripcion) VALUES ("Data Engineer");
-INSERT INTO profesiones(descripcion) VALUES ("Big Data Analyst");
-INSERT INTO profesiones(descripcion) VALUES ("Cyber Security Analyst");
-INSERT INTO profesiones(descripcion) VALUES ("Cyber Security Engineer");
+-- SACAR CURSOS POR CATEGORÍA ORDENADOS POR PUNTUACIÓN 
+select * from cursos where categoria = 5 order by media;
+
+-- INSERTAR REVIEW
+insert into reviews (estudiante, curso, descripcion, valoracion) values (2, 4, "Regular", 3);
+
+-- CALCULAR MEDIA DE REVIEWS
+SELECT AVG(valoracion)
+FROM reviews
+WHERE curso = 4;
+
+-- ACTUALIZAR LA MEDIA ARITMÉTICA EN TABLA CURSOS
+update cursos set media = 4 where id = 4;
+
+-- SACAR MATCHES DE CATEGORÍAS DE UN CURSO CONCRETO 
+select keyword from keywordsCursos where curso = 4;
+
+-- SACAR LAS KEYWORDS DE UN CURSO
+SELECT descripcion
+FROM keywords
+INNER JOIN keywordsCursos
+ON keywords.id = keywordsCursos.keyword
+where curso = 2;
