@@ -222,3 +222,25 @@ INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (1, 4, "Interesante", 4);
 INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (6, 2, "Corto", 3);
+
+INSERT INTO profesiones(descripcion) VALUES ("Full Stack Developer");
+INSERT INTO profesiones(descripcion) VALUES ("Fullstack Developer");
+INSERT INTO profesiones(descripcion) VALUES ("Senior Full Stack Developer");
+INSERT INTO profesiones(descripcion) VALUES ("Junior Full Stack Developer");
+INSERT INTO profesiones(descripcion) VALUES ("Desarrollador Fullstack");
+INSERT INTO profesiones(descripcion) VALUES ("Desarrollador Web");
+INSERT INTO profesiones(descripcion) VALUES ("Frontend Developer");
+INSERT INTO profesiones(descripcion) VALUES ("desarrollador backend");
+INSERT INTO profesiones(descripcion) VALUES ("Backend Developer");
+INSERT INTO profesiones(descripcion) VALUES ("UX Designer");
+INSERT INTO profesiones(descripcion) VALUES ("Web Designer");
+INSERT INTO profesiones(descripcion) VALUES ("UI Designer");
+INSERT INTO profesiones(descripcion) VALUES ("UX UI Designer");
+INSERT INTO profesiones(descripcion) VALUES ("junior web developer");
+INSERT INTO profesiones(descripcion) VALUES ("senior web developer");
+INSERT INTO profesiones(descripcion) VALUES ("Data Scientist");
+INSERT INTO profesiones(descripcion) VALUES ("Data Analyst");
+INSERT INTO profesiones(descripcion) VALUES ("Data Engineer");
+INSERT INTO profesiones(descripcion) VALUES ("Big Data Analyst");
+INSERT INTO profesiones(descripcion) VALUES ("Cyber Security Analyst");
+INSERT INTO profesiones(descripcion) VALUES ("Cyber Security Engineer");
