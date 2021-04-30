@@ -95,6 +95,8 @@ FOREIGN KEY (estudiante) REFERENCES estudiantes(id),
 FOREIGN KEY (curso) REFERENCES cursos(id)
 );
 
+ALTER TABLE reviews ADD UNIQUE INDEX(estudiante, curso);
+-- QUIZÁS HAYA QUE AGREGAR MÁS UNIQUE INDEX A OTRAS TABLAS (revisar)
 
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
 VALUES ("Pedro", "Carbón", "pedrocabron@hotmail.com", "password1", "qwertyn123+");
@@ -146,6 +148,49 @@ INSERT INTO keywords(descripcion)
 VALUES ("Google Ads");
 INSERT INTO keywords(descripcion)
 VALUES ("Facebook Ads");
+
+INSERT INTO profesiones(descripcion)
+VALUES ("Full Stack Developer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Desarrollador Web");
+INSERT INTO profesiones(descripcion)
+VALUES ("Frontend Developer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Backend Developer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Test Engineer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Cloud Architect");
+INSERT INTO profesiones(descripcion)
+VALUES ("UX Designer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Web Designer");
+INSERT INTO profesiones(descripcion)
+VALUES ("UI Designer");
+INSERT INTO profesiones(descripcion)
+VALUES ("UX UI Designer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Product Designer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Data Scientist");
+INSERT INTO profesiones(descripcion)
+VALUES ("Data Analyst");
+INSERT INTO profesiones(descripcion)
+VALUES ("Data Engineer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Big Data Analyst");
+INSERT INTO profesiones(descripcion)
+VALUES ("Cyber Security Analyst");
+INSERT INTO profesiones(descripcion)
+VALUES ("Cyber Security Engineer");
+INSERT INTO profesiones(descripcion)
+VALUES ("Cyber Security Consultant");
+INSERT INTO profesiones(descripcion)
+VALUES ("Digital Marketing Analyst");
+INSERT INTO profesiones(descripcion)
+VALUES ("Digital Marketing Specialist");
+INSERT INTO profesiones(descripcion)
+VALUES ("SEO Specialist");
 
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Fernando Alfaro", "alfarogr@hotmail.com", "password1", "qwerty123+", "Soy un experto en queries", "linkedin.com/alfarogr");
