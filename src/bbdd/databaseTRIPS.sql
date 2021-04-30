@@ -270,7 +270,7 @@ INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (6, 2, "Corto", 3);
 
 -- SACAR CURSOS POR CATEGORÍA ORDENADOS POR PUNTUACIÓN 
-select * from cursos where categoria = 5 order by media;
+select * from cursos where categoria = 5 order by media DESC;
 
 -- INSERTAR REVIEW
 insert into reviews (estudiante, curso, descripcion, valoracion) values (2, 4, "Regular", 3);

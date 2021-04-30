@@ -16,8 +16,8 @@ function randomString(){
     return cryptoRS({length: 10, type: 'base64'})
 }
 
-function createToken(email, ID, secret, expiration){
-    return jwt.sign({email: email, id: ID}, secret, {expiresIn: expiration})
+function createToken(email, ID, rol, secret, expiration){
+    return jwt.sign({email: email, id: ID, rol: rol}, secret, {expiresIn: expiration})
 }
 
 function decodeToken(token){
@@ -36,23 +36,13 @@ function mailPassword(mail, token){
             pass: process.env.PASS
         }
     });
-      
-    let message = `Puedes actualizar tu contraseña clicando en este enlace: http://localhost:4000/password?tok=${token}.`;
-      
+          
     let mailOptions = {
-    from: 'x@gmail.com',
+    from: 'jobscrappers@gmail.com',
     to: mail,
     subject: 'RECUPERA TU CONTRASEÑA',
-    text: message
+    text: `Puedes actualizar tu contraseña clicando en este enlace: http://localhost:4000/password?tok=${token}.`
     };
-
-    transporter.verify(function(error, success) {
-        if (error) {
-        console.log(error);
-        } else {
-        console.log("Server is ready to take our messages");
-        }
-    });
       
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
