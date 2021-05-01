@@ -114,6 +114,38 @@ function keywords(curso) {
     });
 }
 
+// -----------------------------------------------------------NEW REVIEW
+
+
+function newReview(body, payload, curso) {
+    return new Promise((resolve, reject) => {
+        DB.query(`INSERT IGNORE INTO reviews (estudiante, curso, descripcion, valoracion) VALUES ("${payload.id}", "${curso}", "${body.descripcion}", "${body.valoracion}");`, (err, result) => {
+            if (err)
+                return reject(err)
+            if (result.affectedRows > 0) {
+                DB.query(`
+                SELECT AVG (valoracion)
+                FROM reviews
+                WHERE curso = ${curso};`, (e, r) => {
+                    if (e)
+                        throw (e)
+                    DB.query(
+                        `UPDATE cursos SET media = '${Object.values(r[0])[0]}' where id = ${curso};`,
+                        (er, res) => {
+                            if (er)
+                                throw (er)
+                            resolve (res);
+                        })
+                })
+            } else {
+                resolve (result)
+            }
+
+        })
+    }
+    )
+}
+
 // ---------------------------EXPORTS
 
 module.exports = {
@@ -125,5 +157,6 @@ module.exports = {
     recoverPass,
     newPass,
     searchAll,
-    keywords
+    keywords,
+    newReview
 };

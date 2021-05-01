@@ -6,7 +6,7 @@ const cors = require('cors')
 const { createToken, hash, randomString, decodeToken, emailIsValid,
     passIsValid, nameIsValid, mailPassword } = require("../middlewares/middlewares");
 
-const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass, newPass, searchAll, keywords } = require("../queries/SQLqueries")
+const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass, newPass, searchAll, keywords, newReview } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -300,7 +300,7 @@ server.get('/keywords/:curso', async (req, res) => {
             res.status(400).json({
                 status: 400,
                 ok: false,
-                data: "Error"
+                data: "Error base de datos"
             })
         }
     } catch (err) {
@@ -312,3 +312,33 @@ server.get('/keywords/:curso', async (req, res) => {
     }
 })
 
+// ------------------------------------------------------------------NEW REVIEW
+
+server.post('/newReview/:curso', async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(" ")[1]
+        const PAYLOAD = decodeToken(token)
+        const SQLresponse = await newReview(req.body, PAYLOAD, req.params.curso)
+        if (SQLresponse.affectedRows > 0) {
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                msg: "Review guardada correctamente",
+            })
+        } else {
+            res.status(400).json({
+                status: 400,
+                ok: false,
+                msg: "Review previamente guardada",
+            })
+        }
+    } catch (err) {
+        if (err.errno)
+            res.status(500).json({
+                status: 500,
+                ok: false,
+                data: err.sqlMessage,
+                msg: "Error en base de datos"
+            })
+    }
+})
