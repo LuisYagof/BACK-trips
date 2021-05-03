@@ -206,24 +206,133 @@ VALUES ("Sol Jimenez", "soljimenez@gmail.com", "password1", "qwerty123+", "Creat
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Silvia Hernández", "silviahernandez@gmail.com", "password1", "qwerty123+", "Soy la master del React", "linkedin.com/silviahernandez");
 
-INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
-VALUES ("React Native: Aplicaciones nativas para IOS y Android", "Aprende React Native desde cero. Usa React Native para construir aplicaciones iOS y Android y profundiza en React Native", "linkcurso1.com", 1, 150, 13, 0, 1, true, false 
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) 
+VALUES ("React Native: Aplicaciones nativas para IOS y Android", "Aprende React Native desde cero. Usa React Native para construir aplicaciones iOS y Android y profundiza en React Native", https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 1, 150, 13, 0, 1, true, false, 3.5, https://escuela.it/storage/course_images_thumbnail/4x0N45XCJQqqgsNUj8RON0JvDOydd5FJNye7ug3Z.jpg
 );
-INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
-VALUES ("JavaScript de cero a experto", "Aprende el lenguaje de programación web más popular paso a paso Con Proyectos, inc. Electron React MongoDB Node Express","linkcurso2.com", 2, 176, 16, 0, 2, false, true
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) 
+VALUES ("JavaScript de cero a experto", "Aprende el lenguaje de programación web más popular paso a paso Con Proyectos, inc. Electron React MongoDB Node Express",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 2, 176, 16, 0, 2, false, true, 2.8, https://escuela.it/storage/course_images_thumbnail/SBw0PyAgXtsuIcRGjMJTQ5RqcYRUDR6seO8pinkh.jpeg   
 );
-INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
-VALUES ("Node y APIRest", "Rest, despliegues, Heroku, Mongo, Git, GitHub, Sockets, archivos, JWT y mucho más para ser un experto en Node", "linkcurso3.com", 3, 134, 18, 0, 1, true, true
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) 
+VALUES ("Node y APIRest", "Rest, despliegues, Heroku, Mongo, Git, GitHub, Sockets, archivos, JWT y mucho más para ser un experto en Node", https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 3, 134, 18, 0, 1, true, true, 4.2, https://escuela.it/storage/course_images_thumbnail/thumbnail-imagen-curso-angularjs-31.jpg 
 );
-INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
-VALUES ("Administrador de Salesforce", "Comienza tu Carrera Profesional como Administrador de Salesforce", "linkcurso4.com", 4, 180, 18, 0, 4, true, true
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) 
+VALUES ("Administrador de Salesforce", "Comienza tu Carrera Profesional como Administrador de Salesforce", https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 4, 180, 18, 0, 4, true, true, 3.6, https://escuela.it/storage/course_images_thumbnail/thumbnail-imagen-curso-angularjs-31.jpg 
 );
-INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
-VALUES ("Experto en Sketch", "Aprende a usar la herramienta más popular y profesional para diseño de interfaz", "linkcurso5.com", 5, 198, 12, 0, 5, false, false
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) 
+VALUES ("Experto en Sketch", "Aprende a usar la herramienta más popular y profesional para diseño de interfaz", https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 5, 198, 12, 0, 5, false, false, 2.9, https://escuela.it/storage/course_images_thumbnail/SBw0PyAgXtsuIcRGjMJTQ5RqcYRUDR6seO8pinkh.jpeg  
 );
-INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
-VALUES ("Python + SQLite", "Aprende a programar con clases y objetos, a usar ficheros y bases de datos SQLite, interfaces gráficas y más con Python!", "linkcurso6.com", 6, 100, 14, 0, 6, false, false
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) 
+VALUES ("Python + SQLite", "Aprende a programar con clases y objetos, a usar ficheros y bases de datos SQLite, interfaces gráficas y más con Python!", https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 6, 100, 14, 0, 6, false, false, 2.8, https://escuela.it/storage/course_images_thumbnail/4x0N45XCJQqqgsNUj8RON0JvDOydd5FJNye7ug3Z.jpg
 );
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) 
+VALUES ("excel para todos","excel curso básico para principiantes",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 7,150,23,0,40,False,True, 4.2, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES ("adobe photoshop para novatos","Master Diseño Digital con Adobe Photoshop CC 2019" ,https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 8,160,24,0,50,False,False, 3.9, https://escuela.it/storage/course_images_thumbnail/SBw0PyAgXtsuIcRGjMJTQ5RqcYRUDR6seO8pinkh.jpeg  
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("R tus primeras 100 horas","Curso avanzado de Series Temporales con R" ,https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 9,170,25,0,60,True,True, 4.6, https://escuela.it/storage/course_images_thumbnail/thumbnail-imagen-curso-angularjs-31.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("CSS de cero a 100","CSS curso básico", "Aprende Desarrollo Web con este curso 100% práctico, paso a paso y sin conocimientos previos, INCLUYE PROYECTO FINAL",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 10,180,26,0,20,False,False, 4.2, https://escuela.it/storage/course_images_thumbnail/curso-express-nodejs-mini-65.jpg 
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("HTML nivel experto","Crear Una Página Web Desde Cero con HTML",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 6,27,1,20,False,False,4.1,https://escuela.it/storage/course_images_thumbnail/4x0N45XCJQqqgsNUj8RON0JvDOydd5FJNye7ug3Z.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("SQL para principiantes","SQL curso básico con MySQL, usar ficheros y bases de datos",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 8,210,28,0,60,True,True, 3.5, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("power bi","Curso Power BI – Análisis de Datos y Business Intelligence",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 4,220,29,0,60,True,True, 2.2, https://escuela.it/storage/course_images_thumbnail/thumbnail-imagen-curso-angularjs-31.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("tableu moderno","tableu curso básico, Aprende a usar la herramienta más popular ",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 2,230,30,0,60,True,True, 4.1, https://escuela.it/storage/course_images_thumbnail/SBw0PyAgXtsuIcRGjMJTQ5RqcYRUDR6seO8pinkh.jpeg  
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("mlflow desde cero","mlflow curso básico",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 5,240,32,0,60,False,False, 3.6, https://escuela.it/storage/course_images_thumbnail/4x0N45XCJQqqgsNUj8RON0JvDOydd5FJNye7ug3Z.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("mongo nivel intermedio","Desarrollo web con MongoDB",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 1,250,33,0,30,True,True, 3.3, https://escuela.it/storage/course_images_thumbnail/curso-express-nodejs-mini-65.jpg 
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("angular para empezar","Angular: De cero a experto",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 1,260,34,1,10,False,False, 3.2, https://escuela.it/storage/course_images_thumbnail/SBw0PyAgXtsuIcRGjMJTQ5RqcYRUDR6seO8pinkh.jpeg  
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("power point nivel avanzado","powerpoint curso avanzado para realizar mejores presentaciones",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 8,270,35,0,40,False,False, 4.8, https://escuela.it/storage/course_images_thumbnail/thumbnail-imagen-curso-angularjs-31.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("pycharm para pricipiantes","pycharm curso básico",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 3,280,36,0,60,True,True, 4.1, https://escuela.it/storage/course_images_thumbnail/4x0N45XCJQqqgsNUj8RON0JvDOydd5FJNye7ug3Z.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("jquery nivel experto","jquery curso básico, usar ficheros y bases de datos",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 2,290,37,0,10,True,True, 2.6, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("bootstrap para todos","Bootstrap 4: El Curso Completo, Práctico y Desde Cero",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 2,300,38,0,10,False,False, 2.9, https://escuela.it/storage/course_images_thumbnail/SBw0PyAgXtsuIcRGjMJTQ5RqcYRUDR6seO8pinkh.jpeg  
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("eclipse para hoy y mañana","eclipse curso básico",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 7,310,39,0,30,True,True, 4.7, https://escuela.it/storage/course_images_thumbnail/curso-express-nodejs-mini-65.jpg 
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("illustrator nivel avanzado","illustrator curso básico, Aprende a usar la herramienta más popular ",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 6,320,40,1,50,False,False, 3.6, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("streamlit","streamlit curso básico",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 5,330,41,0,60,False,False, 4.1, https://escuela.it/storage/course_images_thumbnail/thumbnail-imagen-curso-angularjs-31.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("sap+hana+abap","Curso Completo Consultor SAP MM desde Cero",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 4,340,42,0,30,True,True, 4.2, https://escuela.it/storage/course_images_thumbnail/SBw0PyAgXtsuIcRGjMJTQ5RqcYRUDR6seO8pinkh.jpeg  
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("matlab 300 horas","Aprende Matlab Completo: De Básico a Avanzado",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 1,350,43,1,60,False,False, 3.2, https://escuela.it/storage/course_images_thumbnail/4x0N45XCJQqqgsNUj8RON0JvDOydd5FJNye7ug3Z.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("orstat mejora tu nivel","orstat curso básico",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 6,360,44,0,60,False,False, 1.8, https://escuela.it/storage/course_images_thumbnail/thumbnail-imagen-curso-angularjs-31.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("statgraphics moderno","statgraphics curso básico",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 7,370,45,0,60,True,True, 2.9, https://escuela.it/storage/course_images_thumbnail/curso-express-nodejs-mini-65.jpg 
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("oracle para todos","Aprende a usar el lenguaje SQL, utilizado por Oracle 18c, 12c y 11g y orientado a preparar la certificación 1Z0-071",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 2,380,46,1,10,True,True, 4.0, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("tensorflow nivel bajo","Deep Learning con Tensorflow para Machine Learning e IA",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 5,390,47,0,60,False,False, 3.6, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("c++ para novatos","Curso de C++: Básico a Avanzado","linkcurso28.com",3,400,48,0,30,True,True, 4.1, linkimagenCurso
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("matplotlib desde cero","Análisis de Datos y Gráficos con Python: Panda y Matplotlib.",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 5,410,40,1,60,False,True, 4.4, https://escuela.it/storage/course_images_thumbnail/4x0N45XCJQqqgsNUj8RON0JvDOydd5FJNye7ug3Z.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("github para expertos","GIT+GitHub: Todo un sistema de control de versiones de cero",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 8,420,41,1,20,False,False, 3.2, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("java para todos","En este curso aprenderás desde las bases de java hacia temas más avanzados del lenguaje",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 4,430,42,0,30,True,True, 3.8, https://escuela.it/storage/course_images_thumbnail/curso-express-nodejs-mini-65.jpg 
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("ms project","La guía más rápida, sencilla y completa para lograr usar con éxito MS Project 2010 para administrar tus proyectos",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 6,440,43,0,40,True,False, 4.1, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("miro nivel intermedio","miro curso básico",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 3,450,44,1,50,False,False, 2.3, https://escuela.it/storage/course_images_thumbnail/thumbnail-imagen-curso-angularjs-31.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("scala desde cero","Aprende a desarrollar programas con el lenguaje Scala desde cero hasta conceptos avanzados",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 8,460,45,1,30,True,True, 3.9, https://escuela.it/storage/course_images_thumbnail/SBw0PyAgXtsuIcRGjMJTQ5RqcYRUDR6seO8pinkh.jpeg  
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("ruby para novatos","Aprende a programar con Ruby (desde cero y 100% en español)",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 2,470,46,0,30,False,False, 3.3, https://escuela.it/storage/course_images_thumbnail/XKDwoV6ssV15ioMZ0w1d6KlRwale2p4YGeJnsFRQ.jpeg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("kobol para profesionales","Se ha recopilado todo lo necesario para que empieces a programar en COBOL lo más pronto posible.",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 4,480,47,0,30,False,True, 1.2, https://escuela.it/storage/course_images_thumbnail/4x0N45XCJQqqgsNUj8RON0JvDOydd5FJNye7ug3Z.jpg
+);
+INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen)
+VALUES("kotlin para todos","Curso de Android 11 con Kotlin: Intensivo y práctico 2021",https://escuela.it/cursos/back-edge-desarrollo-web-al-limite-nodejs-es6-npm-mongodb, 1,490,48,1,30,True,True, 4.1, https://escuela.it/storage/course_images_thumbnail/curso-express-nodejs-mini-65.jpg 
+);
+
+
+
+
+
+
+
 
 INSERT INTO keywordsCursos(curso, keyword)
 VALUES (1, 1);
