@@ -269,6 +269,25 @@ VALUES (1, 4, "Interesante", 4);
 INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (6, 2, "Corto", 3);
 
+INSERT INTO favoritos(curso, estudiante)
+VALUES (1, 1);
+INSERT INTO favoritos(curso, estudiante)
+VALUES (1, 2);
+INSERT INTO favoritos(curso, estudiante)
+VALUES (2, 3);
+INSERT INTO favoritos(curso, estudiante)
+VALUES (3, 4);
+INSERT INTO favoritos(curso, estudiante)
+VALUES (4, 6);
+INSERT INTO favoritos(curso, estudiante)
+VALUES (5, 5);
+INSERT INTO favoritos(curso, estudiante)
+VALUES (6, 6);
+INSERT INTO favoritos(curso, estudiante)
+VALUES (1, 7);
+INSERT INTO favoritos(curso, estudiante)
+VALUES (3, 7);
+
 -- SACAR CURSOS POR CATEGORÍA ORDENADOS POR PUNTUACIÓN 
 select * from cursos where categoria = 5 order by media DESC;
 
