@@ -371,6 +371,8 @@ server.get('/showFavs', async (req, res) => {
             status: 403,
             ok: false,
             data: err,
+
+        // ESTO VA A SER DISTINTO --> SOLO LOGADO SE VA A ACCEDER A ESTE ENDPOINT
             msg: "Inicia sesión para ver tus favoritos",
             url: '/login'
         })
