@@ -171,6 +171,27 @@ function showFavs(payload, token) {
     })
 }
 
+
+function newFav (payload, curso) {
+    return new Promise((resolve, reject) =>{
+        DB.query(`INSERT IGNORE INTO favoritos (curso, estudiante) VALUES ("${curso}", "${payload.id}");`, (err, result) => {
+            if (err)
+                return reject(err);
+            resolve(result);
+        });
+    });
+}
+
+function deleteFav (idCurso, idUser) {
+    return new Promise((resolve, reject) =>{
+        DB.query(`DELETE FROM favoritos WHERE curso = "${idCurso}" AND estudiante = "${idUser}";`, (err, result) => {
+            if (err)
+                return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 // ---------------------------EXPORTS
 
 module.exports = {
@@ -184,5 +205,7 @@ module.exports = {
     searchAll,
     keywords,
     newReview,
-    showFavs
+    showFavs,
+    newFav,
+    deleteFav
 };

@@ -53,6 +53,8 @@ FOREIGN KEY (estudiante) REFERENCES estudiantes(id),
 FOREIGN KEY (curso) REFERENCES cursos(id)
 );
 
+ALTER TABLE favoritos ADD UNIQUE INDEX(curso, estudiante);
+
 CREATE TABLE profesiones(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 descripcion VARCHAR(255)

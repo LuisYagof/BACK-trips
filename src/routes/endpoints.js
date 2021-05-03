@@ -7,7 +7,7 @@ const { createToken, hash, randomString, decodeToken, emailIsValid,
     passIsValid, nameIsValid, mailPassword } = require("../middlewares/middlewares");
 
 const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
-    newPass, searchAll, keywords, newReview, showFavs } = require("../queries/SQLqueries")
+    newPass, searchAll, keywords, newReview, showFavs, newFav, deleteFav } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -376,5 +376,69 @@ server.get('/showFavs', async (req, res) => {
             msg: "Inicia sesión para ver tus favoritos",
             url: '/login'
         })
+    }
+})
+
+// ------------------------------------------------------------------NEWFAV
+
+server.post('/newFav/:curso', async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(" ")[1]
+        const PAYLOAD = decodeToken(token)
+        const SQLresponse = await newFav(PAYLOAD, req.params.curso)
+        if (SQLresponse.affectedRows > 0) {
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                msg: "Favorito guardado correctamente",
+            })
+        } else {
+            res.status(400).json({
+                status: 400,
+                ok: false,
+                msg: "Favorito previamente guardado",
+            })
+        }
+    } catch (err) {
+        if (err.errno)
+            res.status(500).json({
+                status: 500,
+                ok: false,
+                data: err.sqlMessage,
+                msg: "Error en base de datos"
+            })
+    }
+})
+
+// ----------------------------------------------------------------DELETEFAV
+
+server.delete('/deleteFav/:curso', async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(" ")[1]
+        const PAYLOAD = decodeToken(token)
+        const SQLresponse = await deleteFav(req.params.curso, PAYLOAD.id)
+        if (SQLresponse.affectedRows > 0) {
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                msg: "Favorito borrado correctamente.",
+                url: '/favoritos'
+            })
+        } else {
+            res.status(400).json({
+                status: 400,
+                ok: false,
+                data: SQLresponse,
+                msg: "Imposible borrar"
+            })
+        }
+    } catch (err) {
+        if (err.errno)
+            res.status(500).json({
+                status: 500,
+                ok: false,
+                data: err.sqlMessage,
+                msg: "Error en base de datos"
+            })
     }
 })
