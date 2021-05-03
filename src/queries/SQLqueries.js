@@ -114,6 +114,84 @@ function keywords(curso) {
     });
 }
 
+// -----------------------------------------------------------NEW REVIEW
+
+
+function newReview(body, payload, curso) {
+    return new Promise((resolve, reject) => {
+        DB.query(`INSERT IGNORE INTO reviews (estudiante, curso, descripcion, valoracion) VALUES ("${payload.id}", "${curso}", "${body.descripcion}", "${body.valoracion}");`, (err, result) => {
+            if (err)
+                return reject(err)
+            if (result.affectedRows > 0) {
+                DB.query(`
+                SELECT AVG (valoracion)
+                FROM reviews
+                WHERE curso = ${curso};`, (e, r) => {
+                    if (e)
+                        throw (e)
+                    DB.query(
+                        `UPDATE cursos SET media = '${Object.values(r[0])[0]}' where id = ${curso};`,
+                        (er, res) => {
+                            if (er)
+                                throw (er)
+                            resolve(res);
+                        })
+                })
+            } else {
+                resolve(result)
+            }
+
+        })
+    }
+    )
+}
+
+// -----------------------------------------------------------FAVS
+
+function showFavs(payload, token) {
+    return new Promise((resolve, reject) => {
+        DB.query(`SELECT secreto, id, nombre FROM estudiantes WHERE email = "${payload.email}";`, (e, r) => {
+            try {
+                verifyToken(token, r[0].secreto)
+                DB.query(
+                    `SELECT * FROM cursos
+                    INNER JOIN favoritos
+                    ON cursos.id = favoritos.curso
+                    WHERE estudiante = ${r[0].id};`,
+                    (err, result) => {
+                        if (err)
+                            return reject(err);
+                        let total = { result: result, nombre: r[0].nombre }
+                        resolve(total);
+                    });
+            } catch (err) {
+                return reject(err)
+            }
+        })
+    })
+}
+
+
+function newFav (payload, curso) {
+    return new Promise((resolve, reject) =>{
+        DB.query(`INSERT IGNORE INTO favoritos (curso, estudiante) VALUES ("${curso}", "${payload.id}");`, (err, result) => {
+            if (err)
+                return reject(err);
+            resolve(result);
+        });
+    });
+}
+
+function deleteFav (idCurso, idUser) {
+    return new Promise((resolve, reject) =>{
+        DB.query(`DELETE FROM favoritos WHERE curso = "${idCurso}" AND estudiante = "${idUser}";`, (err, result) => {
+            if (err)
+                return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 // ---------------------------EXPORTS
 
 module.exports = {
@@ -125,5 +203,9 @@ module.exports = {
     recoverPass,
     newPass,
     searchAll,
-    keywords
+    keywords,
+    newReview,
+    showFavs,
+    newFav,
+    deleteFav
 };
