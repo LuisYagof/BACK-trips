@@ -40,7 +40,6 @@ categoria INT,
 bolsaEmpleo BOOLEAN,
 certificado BOOLEAN,
 media INT,
-imagen VARCHAR(255),
 FOREIGN KEY (docente) REFERENCES docentes(id),
 FOREIGN KEY (categoria) REFERENCES categorias(id)
 );
@@ -100,7 +99,7 @@ ALTER TABLE reviews ADD UNIQUE INDEX(estudiante, curso);
 -- QUIZÁS HAYA QUE AGREGAR MÁS UNIQUE INDEX A OTRAS TABLAS (revisar)
 
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Pedro", "Carbón", "pedrocabron@hotmail.com", "password1", "qwertyn123+");
+VALUES ("Pedro", "Carbón", "pedrocarbon@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
 VALUES ("Loli", "Start", "lolistart@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
@@ -198,11 +197,11 @@ VALUES ("Fernando Alfaro", "alfarogr@hotmail.com", "password1", "qwerty123+", "S
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Roberto Borroso", "rborroso@hotmail.com", "password1", "qwerty123+", "Soy diseñador y front-end developer", "linkedin.com/roborroso");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
-VALUES ("Jose Luis", "zellfhirot@hotmail.com", "password1", "qwerty123+", "Soy la máquina de los endpoints", "linkedin.com/zellfhirot");
+VALUES ("José Luis", "zellfhirot@hotmail.com", "password1", "qwerty123+", "Soy la máquina de los endpoints", "linkedin.com/zellfhirot");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
-VALUES ("Luis Fernandez", "luisyagofdez@gmail.com", "password1", "qwerty123+", "React Nativo y bro de todo el mundo", "linkedin.com/luisyagofdez");
+VALUES ("Luis Fernández", "luisyagofdez@gmail.com", "password1", "qwerty123+", "React Nativo y bro de todo el mundo", "linkedin.com/luisyagofdez");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
-VALUES ("Sol Jimenez", "soljimenez@gmail.com", "password1", "qwerty123+", "Creativa y resolutiva", "linkedin.com/soljimenez");
+VALUES ("Sol Jiménez", "soljimenez@gmail.com", "password1", "qwerty123+", "Creativa y resolutiva", "linkedin.com/soljimenez");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Silvia Hernández", "silviahernandez@gmail.com", "password1", "qwerty123+", "Soy la master del React", "linkedin.com/silviahernandez");
 
@@ -270,7 +269,7 @@ INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (6, 2, "Corto", 3);
 
 -- SACAR CURSOS POR CATEGORÍA ORDENADOS POR PUNTUACIÓN 
-select * from cursos where categoria = 5 order by media DESC;
+select * from cursos where categoria = 5 order by media;
 
 -- INSERTAR REVIEW
 insert into reviews (estudiante, curso, descripcion, valoracion) values (2, 4, "Regular", 3);
