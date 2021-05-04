@@ -6,7 +6,8 @@ const cors = require('cors')
 const { createToken, hash, randomString, decodeToken, emailIsValid,
     passIsValid, nameIsValid, mailPassword } = require("../middlewares/middlewares");
 
-const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass, newPass, searchAll, keywords, newReview } = require("../queries/SQLqueries")
+const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
+    newPass, searchAll, keywords, newReview, showFavs, newFav, deleteFav } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -330,6 +331,105 @@ server.post('/newReview/:curso', async (req, res) => {
                 status: 400,
                 ok: false,
                 msg: "Review previamente guardada",
+            })
+        }
+    } catch (err) {
+        if (err.errno)
+            res.status(500).json({
+                status: 500,
+                ok: false,
+                data: err.sqlMessage,
+                msg: "Error en base de datos"
+            })
+    }
+})
+
+// -----------------------------------------------------------------SHOWFAV
+
+server.get('/showFavs', async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(" ")[1]
+        const PAYLOAD = decodeToken(token)
+        const SQLresponse = await showFavs(PAYLOAD, token)
+        if (SQLresponse) {
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                data: SQLresponse.result,
+                nombre: SQLresponse.nombre
+            })
+        } else {
+            res.status(400).json({
+                status: 400,
+                ok: false,
+                data: SQLresponse,
+                msg: "Imposible recuperar favoritos"
+            })
+        }
+    } catch (err) {
+        res.status(403).json({
+            status: 403,
+            ok: false,
+            data: err,
+
+        // ESTO VA A SER DISTINTO --> SOLO LOGADO SE VA A ACCEDER A ESTE ENDPOINT
+            msg: "Inicia sesión para ver tus favoritos",
+            url: '/login'
+        })
+    }
+})
+
+// ------------------------------------------------------------------NEWFAV
+
+server.post('/newFav/:curso', async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(" ")[1]
+        const PAYLOAD = decodeToken(token)
+        const SQLresponse = await newFav(PAYLOAD, req.params.curso)
+        if (SQLresponse.affectedRows > 0) {
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                msg: "Favorito guardado correctamente",
+            })
+        } else {
+            res.status(400).json({
+                status: 400,
+                ok: false,
+                msg: "Favorito previamente guardado",
+            })
+        }
+    } catch (err) {
+        if (err.errno)
+            res.status(500).json({
+                status: 500,
+                ok: false,
+                data: err.sqlMessage,
+                msg: "Error en base de datos"
+            })
+    }
+})
+
+// ----------------------------------------------------------------DELETEFAV
+
+server.delete('/deleteFav/:curso', async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(" ")[1]
+        const PAYLOAD = decodeToken(token)
+        const SQLresponse = await deleteFav(req.params.curso, PAYLOAD.id)
+        if (SQLresponse.affectedRows > 0) {
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                msg: "Favorito borrado correctamente.",
+                url: '/favoritos'
+            })
+        } else {
+            res.status(400).json({
+                status: 400,
+                ok: false,
+                data: SQLresponse,
+                msg: "Imposible borrar"
             })
         }
     } catch (err) {
