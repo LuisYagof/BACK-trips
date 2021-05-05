@@ -359,8 +359,6 @@ INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma
 VALUES("Kotlin para todos","Curso de Android 11 con Kotlin: Intensivo y práctico 2021","https://www.udemy.com/course/kotlin-desde-cero/", 1,490,48,1,3,True,True, 4.1, "https://img-b.udemycdn.com/course/240x135/1253980_5d15_2.jpg?secure=sk3MJ_FfeDZKW1u4thOOgg%3D%3D%2C1620284960" 
 );
 
-
-
 INSERT INTO keywordsCursos(curso, keyword)
 VALUES (1, 1);
 INSERT INTO keywordsCursos(curso, keyword)
