@@ -40,7 +40,6 @@ categoria INT,
 bolsaEmpleo BOOLEAN,
 certificado BOOLEAN,
 media INT,
-imagen VARCHAR(255),
 FOREIGN KEY (docente) REFERENCES docentes(id),
 FOREIGN KEY (categoria) REFERENCES categorias(id)
 );
@@ -102,7 +101,7 @@ ALTER TABLE reviews ADD UNIQUE INDEX(estudiante, curso);
 -- QUIZÁS HAYA QUE AGREGAR MÁS UNIQUE INDEX A OTRAS TABLAS (revisar)
 
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Pedro", "Carbón", "pedrocabron@hotmail.com", "password1", "qwertyn123+");
+VALUES ("Pedro", "Carbón", "pedrocarbon@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
 VALUES ("Loli", "Start", "lolistart@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
@@ -423,7 +422,7 @@ VALUES (6, 6);
 -- VALUES (3, 7);
 
 -- SACAR CURSOS POR CATEGORÍA ORDENADOS POR PUNTUACIÓN 
-select * from cursos where categoria = 5 order by media DESC;
+select * from cursos where categoria = 5 order by media;
 
 -- INSERTAR REVIEW
 insert into reviews (estudiante, curso, descripcion, valoracion) values (2, 4, "Regular", 3);
