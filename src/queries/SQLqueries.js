@@ -92,7 +92,15 @@ function searchAll() {
         DB.query(`SELECT * FROM cursos ORDER BY media DESC;`, (err, result) => {
             if (err)
                 return reject(err);
-            resolve(result);
+            DB.query(`SELECT nombre, id FROM docentes;`, (e, r) => {
+                if (e)
+                    return reject(e);
+                const data = {
+                    cursos: result,
+                    docentes: r
+                }
+                resolve(data);
+            })
         });
     });
 }
@@ -172,8 +180,8 @@ function showFavs(payload, token) {
 }
 
 
-function newFav (payload, curso) {
-    return new Promise((resolve, reject) =>{
+function newFav(payload, curso) {
+    return new Promise((resolve, reject) => {
         DB.query(`INSERT IGNORE INTO favoritos (curso, estudiante) VALUES ("${curso}", "${payload.id}");`, (err, result) => {
             if (err)
                 return reject(err);
@@ -182,8 +190,8 @@ function newFav (payload, curso) {
     });
 }
 
-function deleteFav (idCurso, idUser) {
-    return new Promise((resolve, reject) =>{
+function deleteFav(idCurso, idUser) {
+    return new Promise((resolve, reject) => {
         DB.query(`DELETE FROM favoritos WHERE curso = "${idCurso}" AND estudiante = "${idUser}";`, (err, result) => {
             if (err)
                 return reject(err);

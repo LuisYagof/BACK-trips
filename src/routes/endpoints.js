@@ -263,11 +263,11 @@ server.put('/newPass/:rol', async (req, res) => {
 server.get('/searchAll', async (req, res) => {
     try {
         const SQLresponse = await searchAll()
-        if (SQLresponse[0]) {
+        if (SQLresponse) {
             res.status(200).json({
                 status: 200,
                 ok: true,
-                msg: "Aquí todos los cursos ordenados",
+                msg: "Cursos y docentes",
                 data: SQLresponse
             })
         } else {
