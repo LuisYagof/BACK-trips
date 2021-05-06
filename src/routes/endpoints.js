@@ -28,6 +28,7 @@ server.listen(listenPort,
 // ------------------------------------------------------------------SIGNUP
 
 server.post('/newStudent', async (req, res) => {
+    console.log(req.body);
     if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
         try {
             let random = randomString()
@@ -36,7 +37,7 @@ server.post('/newStudent', async (req, res) => {
                 status: 200,
                 ok: true,
                 data: SQLresponse,
-                msg: "Registrado correctamente",
+                msg: "Registrado correctamente.",
                 url: '/',
                 token: await createToken(req.body.email, SQLresponse.insertId, "estudiantes", random, 172800)
             })
@@ -53,7 +54,7 @@ server.post('/newStudent', async (req, res) => {
         res.status(406).json({
             status: 406,
             ok: false,
-            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 letras o números, sin caracteres especiales"
+            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 letras o números, sin caracteres especiales."
         })
     }
 })
