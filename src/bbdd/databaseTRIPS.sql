@@ -40,6 +40,7 @@ categoria INT,
 bolsaEmpleo BOOLEAN,
 certificado BOOLEAN,
 media INT,
+imagen VARCHAR(255),
 FOREIGN KEY (docente) REFERENCES docentes(id),
 FOREIGN KEY (categoria) REFERENCES categorias(id)
 );
