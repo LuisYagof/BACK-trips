@@ -10,7 +10,7 @@ function hash(string) {
 
 const emailIsValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 const passIsValid = (pass) => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(pass)
-const nameIsValid = (name) => /^[a-zA-Z0-9]{4,16}$/.test(name)
+const nameIsValid = (name) => /^[a-zA-Z0-9 ,.'-]{4,16}$/.test(name)
 
 function randomString(){
     return cryptoRS({length: 10, type: 'base64'})

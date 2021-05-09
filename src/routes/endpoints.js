@@ -28,11 +28,10 @@ server.listen(listenPort,
 // ------------------------------------------------------------------SIGNUP
 
 server.post('/newStudent', async (req, res) => {
-    console.log(req.body);
     if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
         try {
             let random = randomString()
-            const SQLresponse = await newStudent(req.body.nombre, req.body.apellido, req.body.email, hash(req.body.pass), random)
+            const SQLresponse = await newStudent(req.body.nombre, req.body.email, hash(req.body.pass), random)
             res.status(200).json({
                 status: 200,
                 ok: true,
@@ -54,16 +53,16 @@ server.post('/newStudent', async (req, res) => {
         res.status(406).json({
             status: 406,
             ok: false,
-            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 letras o números, sin caracteres especiales."
+            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 caracteres."
         })
     }
 })
 
 server.post('/newTeacher', async (req, res) => {
-    if (emailIsValid(req.body.email) && passIsValid(req.body.pass)) {
+    if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
         try {
             let random = randomString()
-            const SQLresponse = await newTeacher(req.body.nombre, req.body.email, hash(req.body.pass), random, req.body.descripcion, req.body.enlace, req.body.foto)
+            const SQLresponse = await newTeacher(req.body.nombre, req.body.email, hash(req.body.pass), random)
             res.status(200).json({
                 status: 200,
                 ok: true,
@@ -85,7 +84,7 @@ server.post('/newTeacher', async (req, res) => {
         res.status(406).json({
             status: 406,
             ok: false,
-            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 letras o números, sin caracteres especiales"
+            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 letras o números."
         })
     }
 })

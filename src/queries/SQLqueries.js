@@ -3,9 +3,9 @@ const { verifyToken } = require("../middlewares/middlewares")
 
 // -----------------------------------------------------------SIGNUP
 
-function newStudent(nombre, apellido, email, pass, secret) {
+function newStudent(nombre, email, pass, secret) {
     return new Promise((resolve, reject) => {
-        DB.query(`INSERT INTO estudiantes (nombre, apellido, email, pass, secreto) VALUES ( "${nombre}", "${apellido}", "${email}", "${pass}", "${secret}");`, (err, result) => {
+        DB.query(`INSERT INTO estudiantes (nombre, email, pass, secreto) VALUES ( "${nombre}", "${email}", "${pass}", "${secret}");`, (err, result) => {
             if (err)
                 return reject(err);
             resolve(result);
@@ -13,9 +13,9 @@ function newStudent(nombre, apellido, email, pass, secret) {
     });
 }
 
-function newTeacher(nombre, email, pass, secret, descripcion, enlace, foto) {
+function newTeacher(nombre, email, pass, secret) {
     return new Promise((resolve, reject) => {
-        DB.query(`INSERT INTO docentes (nombre, email, pass, secreto, descripcion, enlace, foto) VALUES ( "${nombre}", "${email}", "${pass}", "${secret}", "${descripcion}", "${enlace}", "${foto}");`, (err, result) => {
+        DB.query(`INSERT INTO docentes (nombre, email, pass, secreto) VALUES ( "${nombre}", "${email}", "${pass}", "${secret}");`, (err, result) => {
             if (err)
                 return reject(err);
             resolve(result);
