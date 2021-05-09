@@ -84,7 +84,7 @@ server.post('/newTeacher', async (req, res) => {
         res.status(406).json({
             status: 406,
             ok: false,
-            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 letras o números."
+            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 caracteres."
         })
     }
 })
