@@ -117,7 +117,8 @@ function keywords(curso) {
             (err, result) => {
                 if (err)
                     return reject(err);
-                resolve(result);
+                let data = result.map(e => Object.values(e)[0])
+                resolve(data);
             });
     });
 }

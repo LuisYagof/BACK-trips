@@ -2,9 +2,12 @@
 
 const express = require('express');
 const cors = require('cors')
+const axios = require('axios')
 
 const { createToken, hash, randomString, decodeToken, emailIsValid,
     passIsValid, nameIsValid, mailPassword } = require("../middlewares/middlewares");
+
+    const {linkedin} = require('../config/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
     newPass, searchAll, keywords, newReview, showFavs, newFav, deleteFav } = require("../queries/SQLqueries")
@@ -289,19 +292,34 @@ server.get('/searchAll', async (req, res) => {
 server.get('/keywords/:curso', async (req, res) => {
     try {
         const SQLresponse = await keywords(req.params.curso)
+        console.log("sqlRES", SQLresponse);
         if (SQLresponse[0]) {
-            res.status(200).json({
-                status: 200,
-                ok: true,
-                msg: "Aquí las keywords",
-                etiquetas: SQLresponse.map(el => Object.values(el)[0])
-
+            const APIresponse = axios({
+            method: 'get',
+            url: `http://apidatatripu-env.eba-zb6ziaqv.eu-west-1.elasticbeanstalk.com/api/v1/courses/get_courses_simple`,
+            headers: {
+                'content-type': 'application/json'
+            },
+            data: {
+                tags: ["Laravel"],
+                professions: [
+                    "Full Stack Developer",
+                    "Frontend Developer"
+                ]
+            }
+        })
+            .then((response) => {
+                res.status(200).json({
+                    status: 200,
+                    ok: true,
+                    APIresponse: response.data
+                })
             })
         } else {
             res.status(400).json({
                 status: 400,
                 ok: false,
-                data: "Error base de datos"
+                data: "No hay datos"
             })
         }
     } catch (err) {
@@ -312,6 +330,42 @@ server.get('/keywords/:curso', async (req, res) => {
         })
     }
 })
+
+// server.get('/api', async (req, res) => {
+//     try {
+//         const APIresponse = await axios({
+//             method: 'GET',
+//             url: `http://apidatatripu-env.eba-zb6ziaqv.eu-west-1.elasticbeanstalk.com/api/v1/courses/get_courses_simple`,
+//             headers: {
+//                 'content-type': 'application/json'
+//             },
+//             data: {
+//                 tags: [
+//                     "Javascript",
+//                     "jQuery"
+//                 ],
+//                 professions: [
+//                     "Full Stack Developer",
+//                     "Test Engineer"
+//                 ]
+//             }
+//         })
+//             .then((response) => {
+//                 res.status(200).json({
+//                     status: 200,
+//                     ok: true,
+//                     APIresponse: response.data
+//                 })
+//             })
+//     } catch (err) {
+//         res.status(500).json({
+//             status: 500,
+//             ok: false,
+//             data: err
+//         })
+//     }
+// })
+
 
 // ------------------------------------------------------------------NEW REVIEW
 
@@ -372,7 +426,7 @@ server.get('/showFavs', async (req, res) => {
             ok: false,
             data: err,
 
-        // ESTO VA A SER DISTINTO --> SOLO LOGADO SE VA A ACCEDER A ESTE ENDPOINT
+            // ESTO VA A SER DISTINTO --> SOLO LOGADO SE VA A ACCEDER A ESTE ENDPOINT
             msg: "Inicia sesión para ver tus favoritos",
             url: '/login'
         })

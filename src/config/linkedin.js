@@ -19,7 +19,7 @@ async function linkedin(kw) {
 
 }
 
-linkedin("javascript");
+linkedin("Laravel");
 
 module.exports = {
   linkedin
