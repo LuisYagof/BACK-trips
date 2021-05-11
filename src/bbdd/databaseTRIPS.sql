@@ -164,6 +164,74 @@ INSERT INTO keywords(descripcion)
 VALUES ("Google Ads");
 INSERT INTO keywords(descripcion)
 VALUES ("Facebook Ads");
+INSERT INTO keywords(descripcion)
+VALUES ("React Native");
+INSERT INTO keywords(descripcion)
+VALUES ("SQLite");
+INSERT INTO keywords(descripcion)
+VALUES ("Excel");
+INSERT INTO keywords(descripcion)
+VALUES ("Photoshop");
+INSERT INTO keywords(descripcion)
+VALUES ("R");
+INSERT INTO keywords(descripcion)
+VALUES ("CSS");
+INSERT INTO keywords(descripcion)
+VALUES ("HTML");
+INSERT INTO keywords(descripcion)
+VALUES ("PowerBI");
+INSERT INTO keywords(descripcion)
+VALUES ("Tableu");
+INSERT INTO keywords(descripcion)
+VALUES ("MLflow");
+INSERT INTO keywords(descripcion)
+VALUES ("Angular");
+INSERT INTO keywords(descripcion)
+VALUES ("Power Point");
+INSERT INTO keywords(descripcion)
+VALUES ("Pycharm");
+INSERT INTO keywords(descripcion)
+VALUES ("JQuery");
+INSERT INTO keywords(descripcion)
+VALUES ("Bootstrap");
+INSERT INTO keywords(descripcion)
+VALUES ("ABAP");
+INSERT INTO keywords(descripcion)
+VALUES ("Illustrator");
+INSERT INTO keywords(descripcion)
+VALUES ("Streamlit");
+INSERT INTO keywords(descripcion)
+VALUES ("Hana");
+INSERT INTO keywords(descripcion)
+VALUES ("Matlab");
+INSERT INTO keywords(descripcion)
+VALUES ("Orstat");
+INSERT INTO keywords(descripcion)
+VALUES ("Mongoose");
+INSERT INTO keywords(descripcion)
+VALUES ("Oracle");
+INSERT INTO keywords(descripcion)
+VALUES ("Tensorflow");
+INSERT INTO keywords(descripcion)
+VALUES ("C++");
+INSERT INTO keywords(descripcion)
+VALUES ("Matplotlib");
+INSERT INTO keywords(descripcion)
+VALUES ("Github");
+INSERT INTO keywords(descripcion)
+VALUES ("Java");
+INSERT INTO keywords(descripcion)
+VALUES ("MS Proyect");
+INSERT INTO keywords(descripcion)
+VALUES ("Miro");
+INSERT INTO keywords(descripcion)
+VALUES ("Scala");
+INSERT INTO keywords(descripcion)
+VALUES ("Ruby");
+INSERT INTO keywords(descripcion)
+VALUES ("Cobol");
+INSERT INTO keywords(descripcion)
+VALUES ("Kotlin");
 
 INSERT INTO profesiones(descripcion)
 VALUES ("Full Stack Developer");
@@ -335,12 +403,6 @@ VALUES (1, 1);
 INSERT INTO keywordsCursos(curso, keyword)
 VALUES (2, 2);
 INSERT INTO keywordsCursos(curso, keyword)
-VALUES (2, 1);
-INSERT INTO keywordsCursos(curso, keyword)
-VALUES (2, 5);
-INSERT INTO keywordsCursos(curso, keyword)
-VALUES (3, 5);
-INSERT INTO keywordsCursos(curso, keyword)
 VALUES (3, 9);
 INSERT INTO keywordsCursos(curso, keyword)
 VALUES (4, 8);
@@ -349,7 +411,77 @@ VALUES (5, 7);
 INSERT INTO keywordsCursos(curso, keyword)
 VALUES (6, 3);
 INSERT INTO keywordsCursos(curso, keyword)
-VALUES (6, 4);
+VALUES (6, 14);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (7, 15);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (8, 16);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (9, 17);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (10, 18);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (11, 19);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (12, 4);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (13, 20);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (14, 21);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (15, 22);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (16, 5);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (17, 23);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (18, 24);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (19, 25);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (20, 26);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (21, 27);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (22, 28);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (23, 29);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (24, 30);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (25, 28);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (25, 31);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (26, 32);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (27, 33);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (28, 34);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (29, 35);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (30, 36);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (31, 37);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (32, 38);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (33, 39);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (34, 40);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (35, 41);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (36, 42);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (37, 43);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (38, 44);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (39, 45);
+INSERT INTO keywordsCursos(curso, keyword)
+VALUES (40, 46);
 
 INSERT INTO reviews(estudiante, curso, descripcion, valoracion)
 VALUES (1, 2, "Curso buenísimo", 5);

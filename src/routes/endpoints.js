@@ -292,7 +292,7 @@ server.get('/searchAll', async (req, res) => {
 server.get('/keywords/:curso', async (req, res) => {
     try {
         const SQLresponse = await keywords(req.params.curso)
-        console.log("sqlRES", SQLresponse);
+        console.log("sqlRESPON", SQLresponse);
         // if (SQLresponse) {
         //     const APIresponse = axios({
         //         method: 'get',
