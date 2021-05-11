@@ -213,6 +213,18 @@ function deleteFav(idCurso, idUser) {
     });
 }
 
+// -----------------------------------------------------------NEW COURSE
+
+function newCourse(body, docenteId) {
+    return new Promise((resolve, reject) => {
+        DB.query(`INSERT INTO cursos (nombre, descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) VALUES ( "${body.nombre}", "${body.descripcion}", "${body.enlace}", "${docenteId}", "${body.precio}", "${body.duracion}", "${body.idioma}", "${body.categoria}", "${body.bolsaEmpleo}", "${body.certificado}", 0, "${body.imagen}");`, (err, result) => {
+            if (err)
+                return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 // ---------------------------EXPORTS
 
 module.exports = {
@@ -228,5 +240,6 @@ module.exports = {
     newReview,
     showFavs,
     newFav,
-    deleteFav
+    deleteFav,
+    newCourse
 };
