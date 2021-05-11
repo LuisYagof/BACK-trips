@@ -7,10 +7,10 @@ const axios = require('axios')
 const { createToken, hash, randomString, decodeToken, emailIsValid,
     passIsValid, nameIsValid, mailPassword } = require("../middlewares/middlewares");
 
-    const {linkedin} = require('../config/linkedin')
+const { linkedin } = require('../config/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
-    newPass, searchAll, keywords, newReview, showFavs, newFav, deleteFav } = require("../queries/SQLqueries")
+    newPass, searchAll, keywords, newReview, showFavs, newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -127,15 +127,15 @@ server.post('/logUser/:rol', async (req, res) => {
 
 // ------------------------------------------------------------------LOGOUT
 
-server.put('/logout/:rol', async (req, res) => {
+server.put('/logout', async (req, res) => {
     try {
         let newSecret = randomString()
         let token = req.headers.authorization.split(" ")[1]
         const PAYLOAD = decodeToken(token)
-        const SQLresponse = await logout(PAYLOAD, newSecret, req.params.rol)
+        const SQLresponse = await logout(PAYLOAD, newSecret, PAYLOAD.rol)
         res.status(200).json({
             status: 200,
-            ok: false,
+            ok: true,
             data: SQLresponse,
             msg: "Deslogado correctamente",
             url: '/'
@@ -292,29 +292,28 @@ server.get('/searchAll', async (req, res) => {
 server.get('/keywords/:curso', async (req, res) => {
     try {
         const SQLresponse = await keywords(req.params.curso)
-        console.log("sqlRES", SQLresponse);
-        if (SQLresponse[0]) {
+        console.log("sqlRESPON", SQLresponse);
+        if (SQLresponse) {
             const APIresponse = axios({
-            method: 'get',
-            url: `http://apidatatripu-env.eba-zb6ziaqv.eu-west-1.elasticbeanstalk.com/api/v1/courses/get_courses_simple`,
-            headers: {
-                'content-type': 'application/json'
-            },
-            data: {
-                tags: ["Laravel"],
-                professions: [
-                    "Full Stack Developer",
-                    "Frontend Developer"
-                ]
-            }
-        })
-            .then((response) => {
-                res.status(200).json({
-                    status: 200,
-                    ok: true,
-                    APIresponse: response.data
-                })
+                method: 'get',
+                url: `http://apidatatripu-env.eba-zb6ziaqv.eu-west-1.elasticbeanstalk.com/api/v1/courses/get_courses_simple`,
+                headers: {
+                    'content-type': 'application/json'
+                },
+                data: {
+                    tags: SQLresponse.keys,
+                    professions: SQLresponse.profs
+                }
             })
+                .then((response) => {
+                    res.status(200).json({
+                        status: 200,
+                        ok: true,
+                        APIresponse: response.data,
+                        keywords: SQLresponse.keys,
+                        professions: SQLresponse.profs
+                    })
+                })
         } else {
             res.status(400).json({
                 status: 400,
@@ -330,42 +329,6 @@ server.get('/keywords/:curso', async (req, res) => {
         })
     }
 })
-
-// server.get('/api', async (req, res) => {
-//     try {
-//         const APIresponse = await axios({
-//             method: 'GET',
-//             url: `http://apidatatripu-env.eba-zb6ziaqv.eu-west-1.elasticbeanstalk.com/api/v1/courses/get_courses_simple`,
-//             headers: {
-//                 'content-type': 'application/json'
-//             },
-//             data: {
-//                 tags: [
-//                     "Javascript",
-//                     "jQuery"
-//                 ],
-//                 professions: [
-//                     "Full Stack Developer",
-//                     "Test Engineer"
-//                 ]
-//             }
-//         })
-//             .then((response) => {
-//                 res.status(200).json({
-//                     status: 200,
-//                     ok: true,
-//                     APIresponse: response.data
-//                 })
-//             })
-//     } catch (err) {
-//         res.status(500).json({
-//             status: 500,
-//             ok: false,
-//             data: err
-//         })
-//     }
-// })
-
 
 // ------------------------------------------------------------------NEW REVIEW
 
@@ -484,6 +447,37 @@ server.delete('/deleteFav/:curso', async (req, res) => {
                 ok: false,
                 data: SQLresponse,
                 msg: "Imposible borrar"
+            })
+        }
+    } catch (err) {
+        if (err.errno)
+            res.status(500).json({
+                status: 500,
+                ok: false,
+                data: err.sqlMessage,
+                msg: "Error en base de datos"
+            })
+    }
+})
+
+// ----------------------------------------------------------------NEW COURSE
+
+server.post('/newCourse', async (req, res) => {
+    try {
+        let token = req.headers.authorization.split(" ")[1]
+        const PAYLOAD = decodeToken(token)
+        const SQLresponse = await newCourse(req.body, PAYLOAD.id)
+        if (SQLresponse.affectedRows > 0) {
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                msg: "Curso guardado correctamente",
+            })
+        } else {
+            res.status(400).json({
+                status: 400,
+                ok: false,
+                msg: "El curso ya existe",
             })
         }
     } catch (err) {
