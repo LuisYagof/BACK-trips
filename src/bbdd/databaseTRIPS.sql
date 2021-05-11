@@ -505,6 +505,52 @@ INSERT INTO profesionesCursos(curso, profesion)
 VALUES (29, 4);
 INSERT INTO profesionesCursos(curso, profesion)
 VALUES (29, 14);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (29, 14);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (30, 13);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (30, 14);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (31, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (31, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (32, 12);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (32, 13);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (33, 1);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (33, 15);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (34, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (34, 1);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (35, 11);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (35, 5);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (36, 7);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (36, 10);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (37, 1);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (37, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (38, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (38, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (39, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (39, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (40, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (40, 3);
 
 -- -----------------------------------------------------------QUERIES
 
