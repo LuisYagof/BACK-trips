@@ -50,12 +50,12 @@ function linkedinPromise(arrKW, inter) {
     return num
   }))
     .then(values => console.log(values))
-    .catch(reason => {
-      console.log(reason)
+    .catch(error => {
+      console.log(error)
     });
 }
 
-linkedinPromise(["React%20Node", "Laravel", "CoffeeScript"], intervalos.dia)
+linkedinPromise(["Zeplin"], intervalos.semana)
 
 module.exports = {
   linkedin, linkedinPromise
