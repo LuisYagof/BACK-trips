@@ -81,13 +81,6 @@ FOREIGN KEY (curso) REFERENCES cursos(id),
 FOREIGN KEY (keyword) REFERENCES keywords(id)
 );
 
--- CREATE TABLE links(
--- id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
--- enlace VARCHAR(255),
--- docente INT,
--- FOREIGN KEY (docente) REFERENCES docentes(id)
--- );
-
 CREATE TABLE reviews(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 estudiante INT,
@@ -99,7 +92,6 @@ FOREIGN KEY (curso) REFERENCES cursos(id)
 );
 
 ALTER TABLE reviews ADD UNIQUE INDEX(estudiante, curso);
--- QUIZÁS HAYA QUE AGREGAR MÁS UNIQUE INDEX A OTRAS TABLAS (revisar)
 
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
 VALUES ("Pedro", "Carbón", "pedrocarbon@hotmail.com", "password1", "qwertyn123+");
@@ -215,27 +207,6 @@ INSERT INTO profesiones(descripcion)
 VALUES ("Digital Marketing Specialist");
 INSERT INTO profesiones(descripcion)
 VALUES ("SEO Specialist");
-
--- INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
--- VALUES ("React Native: Aplicaciones nativas para IOS y Android", "Aprende React Native desde cero. Usa React Native para construir aplicaciones iOS y Android y profundiza en React Native", "linkcurso1.com", 1, 150, 13, 0, 1, true, false 
--- );
--- INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
--- VALUES ("JavaScript de cero a experto", "Aprende el lenguaje de programación web más popular paso a paso Con Proyectos, inc. Electron React MongoDB Node Express","linkcurso2.com", 2, 176, 16, 0, 2, false, true
--- );
--- INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
--- VALUES ("Node y APIRest", "Rest, despliegues, Heroku, Mongo, Git, GitHub, Sockets, archivos, JWT y mucho más para ser un experto en Node", "linkcurso3.com", 3, 134, 18, 0, 1, true, true
--- );
--- INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
--- VALUES ("Administrador de Salesforce", "Comienza tu Carrera Profesional como Administrador de Salesforce", "linkcurso4.com", 4, 180, 18, 0, 4, true, true
--- );
--- INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
--- VALUES ("Experto en Sketch", "Aprende a usar la herramienta más popular y profesional para diseño de interfaz", "linkcurso5.com", 5, 198, 12, 0, 5, false, false
--- );
--- INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado) 
--- VALUES ("Python + SQLite", "Aprende a programar con clases y objetos, a usar ficheros y bases de datos SQLite, interfaces gráficas y más con Python!", "linkcurso6.com", 6, 100, 14, 0, 6, false, false
--- );
-
--- ----------------------------------CURSOS MOCKEADOS JOSE - MEDIO ARREGLADOS
 
 INSERT INTO cursos(nombre,descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen) 
 VALUES ("React Native: Aplicaciones nativas para IOS y Android", "Aprende React Native desde cero. Usa React Native para construir aplicaciones iOS y Android y profundiza en React Native", "https://www.udemy.com/course/react-desde-cero/ ", 1, 150, 13, 0, 1, true, false, 3.5, "https://img-a.udemycdn.com/course/240x135/3142596_259b_16.jpg?-p9s73fsg5JGyGlAoE4T0Hp0pUAoWOxSSu-tdtiQYNXH_lcPIhmWTw6X4GdmdfaT5k83j18T9psSnvqJGsgwGrCRPZXMLs50eI3LyFVBX9cGvZPN-F-zJ1_KDEaU2Gw"
@@ -421,6 +392,121 @@ VALUES (6, 6);
 -- VALUES (1, 7);
 -- INSERT INTO favoritos(curso, estudiante)
 -- VALUES (3, 7);
+
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (1, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (1, 3);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (2, 1);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (3, 1);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (3, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (4, 20);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (4, 11);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (5, 9);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (5, 10);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (6, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (6, 12);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (7, 13);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (7, 19);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (8, 8);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (8, 9);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (9, 12);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (9, 15);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (10, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (10, 3);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (11, 3);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (11, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (12, 13);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (12, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (13, 14);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (13, 19);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (14, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (15, 12);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (15, 15);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (16, 1);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (16, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (17, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (17, 3);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (18, 11);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (18, 20);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (19, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (19, 13);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (20, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (20, 3);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (21, 2);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (21, 3);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (22, 13);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (22, 19);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (23, 9);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (23, 10);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (24, 12);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (24, 14);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (25, 13);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (25, 19);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (26, 12);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (26, 15);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (27, 12);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (27, 15);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (28, 1);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (28, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (29, 4);
+INSERT INTO profesionesCursos(curso, profesion)
+VALUES (29, 14);
+
+-- -----------------------------------------------------------QUERIES
 
 -- SACAR CURSOS POR CATEGORÍA ORDENADOS POR PUNTUACIÓN 
 select * from cursos where categoria = 5 order by media;

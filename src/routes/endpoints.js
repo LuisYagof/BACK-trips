@@ -292,38 +292,35 @@ server.get('/searchAll', async (req, res) => {
 server.get('/keywords/:curso', async (req, res) => {
     try {
         const SQLresponse = await keywords(req.params.curso)
-        // console.log("sqlRES", SQLresponse);
-        if (SQLresponse[0]) {
-            const APIresponse = axios({
-                method: 'get',
-                url: `http://apidatatripu-env.eba-zb6ziaqv.eu-west-1.elasticbeanstalk.com/api/v1/courses/get_courses_simple`,
-                headers: {
-                    'content-type': 'application/json'
-                },
-                data: {
-                    tags: SQLresponse,
-                    professions: [
-                        "Full Stack Developer",
-                        "Frontend Developer"
-                    ]
-                }
-            })
-                .then((response) => {
-                    res.status(200).json({
-                        status: 200,
-                        ok: true,
-                        APIresponse: response.data,
-                        keywords: SQLresponse,
-                        professions: ["Full Stack Developer", "Frontend Developer"]
-                    })
-                })
-        } else {
-            res.status(400).json({
-                status: 400,
-                ok: false,
-                data: "No hay datos"
-            })
-        }
+        console.log("sqlRES", SQLresponse);
+        // if (SQLresponse) {
+        //     const APIresponse = axios({
+        //         method: 'get',
+        //         url: `http://apidatatripu-env.eba-zb6ziaqv.eu-west-1.elasticbeanstalk.com/api/v1/courses/get_courses_simple`,
+        //         headers: {
+        //             'content-type': 'application/json'
+        //         },
+        //         data: {
+        //             tags: SQLresponse.keys,
+        //             professions: SQLresponse.profs
+        //         }
+        //     })
+        //         .then((response) => {
+        //             res.status(200).json({
+        //                 status: 200,
+        //                 ok: true,
+        //                 APIresponse: response.data,
+        //                 keywords: SQLresponse.keys,
+        //                 professions: SQLresponse.profs
+        //             })
+        //         })
+        // } else {
+        //     res.status(400).json({
+        //         status: 400,
+        //         ok: false,
+        //         data: "No hay datos"
+        //     })
+        // }
     } catch (err) {
         res.status(500).json({
             status: 500,

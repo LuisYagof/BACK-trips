@@ -117,8 +117,20 @@ function keywords(curso) {
             (err, result) => {
                 if (err)
                     return reject(err);
-                let data = result.map(e => Object.values(e)[0])
-                resolve(data);
+                DB.query(
+                    `SELECT descripcion FROM profesiones
+                    INNER JOIN profesionesCursos
+                    ON profesiones.id = profesionesCursos.profesion
+                    WHERE curso = ${curso};`,
+                    (e, res) => {
+                        if (e)
+                            return reject(e);
+                        let data = {
+                            keys: result.map(e => Object.values(e)[0]),
+                            profs: res.map(e => Object.values(e)[0])
+                        }
+                        resolve(data);
+                    })
             });
     });
 }
