@@ -265,12 +265,12 @@ server.put('/newPass/:rol', async (req, res) => {
 // ------------------------------------------------------------------UPDATE USER
 
 server.put('/updateUser', async (req, res) => {
-    if (passIsValid(req.body.pass) && nameIsValid(req.body.name) && emailIsValid(req.body.email)) {
+    if (passIsValid(req.body.pass) && nameIsValid(req.body.nombre) && emailIsValid(req.body.email)) {
         try {
             let newSecret = randomString()
             let token = req.headers.authorization.split(" ")[1]
             const PAYLOAD = decodeToken(token)
-            const SQLresponse = await updateUser(req.body.name, req.body.email, hash(req.body.pass), newSecret, PAYLOAD)
+            const SQLresponse = await updateUser(req.body.nombre, req.body.email, hash(req.body.pass), newSecret, PAYLOAD)
             if (SQLresponse.changedRows > 0) {
                 res.status(200).json({
                     status: 200,

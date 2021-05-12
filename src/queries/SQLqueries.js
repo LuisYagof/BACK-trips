@@ -89,7 +89,7 @@ function newPass(email, pass, rol) {
 
 function updateUser(nombre, email, pass, secreto, payload) {
     return new Promise((resolve, reject) => {
-        DB.query(`UPDATE ${payload.rol} SET nombre = ${nombre}, email = ${email}, pass = "${pass}", secreto = "${secreto}", WHERE id = "${payload.id}";`, (err, result) => {
+        DB.query(`UPDATE ${payload.rol} SET nombre = "${nombre}", email = "${email}", pass = "${pass}", secreto = "${secreto}" WHERE id = "${payload.id}";`, (err, result) => {
             if (err)
                 return reject(err);
             resolve(result);
