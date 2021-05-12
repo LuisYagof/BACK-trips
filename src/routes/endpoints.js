@@ -41,8 +41,8 @@ server.post('/newStudent', async (req, res) => {
                 ok: true,
                 data: SQLresponse,
                 msg: "Registrado correctamente.",
-                url: '/',
-                token: await createToken(req.body.email, SQLresponse.insertId, "estudiantes", random, 172800)
+                token: await createToken(req.body.email, SQLresponse.insertId, "estudiantes", random, 172800),
+                user: {rol: "estudiantes", email: req.body.email, nombre: req.body.nombre}
             })
         } catch (err) {
             if (err.errno)
@@ -72,8 +72,8 @@ server.post('/newTeacher', async (req, res) => {
                 ok: true,
                 data: SQLresponse,
                 msg: "Registrado correctamente",
-                url: '/',
-                token: await createToken(req.body.email, SQLresponse.insertId, "docentes", random, 172800)
+                token: await createToken(req.body.email, SQLresponse.insertId, "docentes", random, 172800),
+                user: {rol: "docentes", email: req.body.email, nombre: req.body.nombre}
             })
         } catch (err) {
             if (err.errno)
@@ -104,8 +104,8 @@ server.post('/logUser/:rol', async (req, res) => {
                 ok: true,
                 data: SQLresponse,
                 msg: "Logado correctamente",
-                url: '/',
-                token: await createToken(SQLresponse[0].email, SQLresponse[0].id, req.params.rol, SQLresponse[0].secreto, 172800)
+                token: await createToken(SQLresponse[0].email, SQLresponse[0].id, req.params.rol, SQLresponse[0].secreto, 172800),
+                user: {rol: req.params.rol, email: req.body.email, nombre: SQLresponse[0].nombre}
             })
         } catch (err) {
             if (err) {
@@ -138,8 +138,7 @@ server.put('/logout', async (req, res) => {
             status: 200,
             ok: true,
             data: SQLresponse,
-            msg: "Deslogado correctamente",
-            url: '/'
+            msg: "Deslogado correctamente"
         })
     } catch (err) {
         if (err) {

@@ -55,7 +55,7 @@ function linkedinPromise(arrKW, inter) {
     });
 }
 
-linkedinPromise(["Zeplin", "UX%20UI", "Research"], intervalos.mes)
+linkedinPromise(["SQL%20matplotlib", "r"], intervalos.semana)
 
 module.exports = {
   linkedin, linkedinPromise
