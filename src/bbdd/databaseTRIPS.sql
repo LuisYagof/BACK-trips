@@ -39,7 +39,7 @@ idioma INT,
 categoria INT,
 bolsaEmpleo BOOLEAN,
 certificado BOOLEAN,
-media INT,
+media FLOAT(3,2),
 imagen VARCHAR(255),
 FOREIGN KEY (docente) REFERENCES docentes(id),
 FOREIGN KEY (categoria) REFERENCES categorias(id)
