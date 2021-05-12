@@ -131,7 +131,28 @@ function keywords(curso) {
                         }
                         resolve(data);
                     })
+
             });
+    });
+}
+
+// -----------------------------------------------------------GET REVIEWS
+
+function getReviews(curso) {
+    return new Promise((resolve, reject) => {
+        DB.query(`SELECT * FROM reviews WHERE curso = "${curso}";`, (err, result) => {
+            if (err)
+                return reject(err);
+            DB.query(`SELECT COUNT(id) FROM reviews WHERE curso = "${curso}";`, (e, r) => {
+                if (e)
+                    return reject(e);
+                let data = {
+                    reviews: result,
+                    reviewNum: Object.values(r[0])[0]
+                }
+                resolve(data);
+            });
+        })
     });
 }
 
@@ -237,6 +258,7 @@ module.exports = {
     newPass,
     searchAll,
     keywords,
+    getReviews,
     newReview,
     showFavs,
     newFav,

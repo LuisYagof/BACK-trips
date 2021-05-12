@@ -10,7 +10,7 @@ const { createToken, hash, randomString, decodeToken, emailIsValid,
 const { linkedin } = require('../config/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
-    newPass, searchAll, keywords, newReview, showFavs, newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
+    newPass, searchAll, keywords, getReviews, newReview, showFavs, newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -291,6 +291,7 @@ server.get('/searchAll', async (req, res) => {
 
 server.get('/dataAPI/:curso', async (req, res) => {
     try {
+        const REVIEWS = await getReviews(req.params.curso)
         const SQLresponse = await keywords(req.params.curso)
         if (SQLresponse) {
             const APIresponse = axios({
@@ -310,7 +311,9 @@ server.get('/dataAPI/:curso', async (req, res) => {
                         ok: true,
                         APIresponse: response.data,
                         keywords: SQLresponse.keys,
-                        professions: SQLresponse.profs
+                        professions: SQLresponse.profs,
+                        reviews: REVIEWS.reviews,
+                        reviewNum: REVIEWS.reviewNum
                     })
                 })
         } else {

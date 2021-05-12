@@ -55,7 +55,7 @@ function linkedinPromise(arrKW, inter) {
     });
 }
 
-linkedinPromise(["Zeplin"], intervalos.semana)
+// linkedinPromise(["Zeplin"], intervalos.semana)
 
 module.exports = {
   linkedin, linkedinPromise
