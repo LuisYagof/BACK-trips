@@ -85,6 +85,18 @@ function newPass(email, pass, rol) {
     });
 }
 
+// -----------------------------------------------------------UPDATE USER
+
+function updateUser(nombre, email, pass, secreto, payload) {
+    return new Promise((resolve, reject) => {
+        DB.query(`UPDATE ${payload.rol} SET nombre = ${nombre}, email = ${email}, pass = "${pass}", secreto = "${secreto}", WHERE id = "${payload.id}";`, (err, result) => {
+            if (err)
+                return reject(err);
+            resolve(result);
+        });
+    });
+}
+
 // -----------------------------------------------------------SEARCH ALL
 
 function searchAll() {
@@ -256,6 +268,7 @@ module.exports = {
     recoverAccount,
     recoverPass,
     newPass,
+    updateUser,
     searchAll,
     keywords,
     getReviews,

@@ -10,7 +10,8 @@ const { createToken, hash, randomString, decodeToken, emailIsValid,
 const { linkedin } = require('../queries/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
-    newPass, searchAll, keywords, getReviews, newReview, showFavs, newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
+    newPass, updateUser, searchAll, keywords, getReviews, newReview, showFavs,
+    newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -257,6 +258,47 @@ server.put('/newPass/:rol', async (req, res) => {
             status: 406,
             ok: false,
             msg: "La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número"
+        })
+    }
+})
+
+// ------------------------------------------------------------------UPDATE USER
+
+server.put('/updateUser', async (req, res) => {
+    if (passIsValid(req.body.pass) && nameIsValid(req.body.name) && emailIsValid(req.body.email)) {
+        try {
+            let newSecret = randomString()
+            let token = req.headers.authorization.split(" ")[1]
+            const PAYLOAD = decodeToken(token)
+            const SQLresponse = await updateUser(req.body.name, req.body.email, hash(req.body.pass), newSecret, PAYLOAD)
+            if (SQLresponse.changedRows > 0) {
+                res.status(200).json({
+                    status: 200,
+                    ok: true,
+                    data: SQLresponse,
+                    message: "Datos de usuario actualizados.",
+                    token: await createToken(req.body.email, PAYLOAD.id, PAYLOAD.rol, newSecret, 172800),
+                })
+            } else {
+                res.status(400).json({
+                    status: 400,
+                    ok: false,
+                    data: SQLresponse,
+                    msg: "Error: datos no actualizados."
+                })
+            }
+        } catch (err) {
+            res.status(500).json({
+                status: 500,
+                ok: false,
+                msg: "Error de base de datos"
+            })
+        }
+    } else {
+        res.status(406).json({
+            status: 406,
+            ok: false,
+            msg: "Email, nombre o contraseña inválidos: La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número. El nombre debe contener de 6 a 16 caracteres."
         })
     }
 })
