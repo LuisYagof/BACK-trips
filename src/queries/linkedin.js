@@ -43,9 +43,9 @@ function linkedinPromise(arrKW, inter) {
     let numOf = []
 
     $('span.results-context-header__job-count').each(function () {
-      numOf.push($(this).text().trim())
+      numOf.push($(this).text().trim().replace(/[+,]/g, ''))
     });
-
+    
     let num = Number(numOf)
     return num
   }))
@@ -55,7 +55,7 @@ function linkedinPromise(arrKW, inter) {
     });
 }
 
-// linkedinPromise(["Zeplin"], intervalos.semana)
+linkedinPromise(["Zeplin", "UX%20UI", "Research"], intervalos.mes)
 
 module.exports = {
   linkedin, linkedinPromise

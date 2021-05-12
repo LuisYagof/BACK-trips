@@ -7,7 +7,7 @@ const axios = require('axios')
 const { createToken, hash, randomString, decodeToken, emailIsValid,
     passIsValid, nameIsValid, mailPassword } = require("../middlewares/middlewares");
 
-const { linkedin } = require('../config/linkedin')
+const { linkedin } = require('../queries/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
     newPass, searchAll, keywords, getReviews, newReview, showFavs, newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
