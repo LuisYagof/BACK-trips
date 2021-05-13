@@ -218,19 +218,6 @@ function getReviews(curso) {
     });
 }
 
-// -----------------------------------------------------------GET ALL COURSE REVIEWS
-
-function getCourseReviews(curso) {
-    return new Promise((resolve, reject) => {
-        DB.query(`SELECT * FROM reviews WHERE curso = "${curso}";`, (err, result) => {
-            if (err)
-                return reject(err);
-            let data = result
-            resolve(data);
-        })
-    });
-}
-
 // -----------------------------------------------------------FAVS
 
 function showFavs(payload, token) {
@@ -305,7 +292,6 @@ module.exports = {
     keywords,
     newReview,
     getReviews,
-    getCourseReviews,
     showFavs,
     newFav,
     deleteFav,

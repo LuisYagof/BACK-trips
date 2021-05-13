@@ -10,7 +10,7 @@ const { createToken, hash, randomString, decodeToken, emailIsValid,
 const { linkedin } = require('../queries/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, verification, recoverAccount, recoverPass,
-	newPass, updateUser, searchAll, keywords, getReviews, newReview, getCourseReviews, showFavs,
+	newPass, updateUser, searchAll, keywords, getReviews, newReview, showFavs,
 	newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
@@ -424,34 +424,6 @@ server.post('/newReview/:curso', async (req, res) => {
 				data: err.sqlMessage,
 				msg: "Error en base de datos"
 			})
-	}
-})
-
-// ------------------------------------------------------------------GET ALL COURSE REVIEWS
-
-server.get('/searchReviews/:curso', async (req, res) => {
-	try {
-		const SQLresponse = await getCourseReviews(req.params.curso)
-		if (SQLresponse) {
-			res.status(200).json({
-				status: 200,
-				ok: true,
-				msg: "Reviews",
-				data: SQLresponse
-			})
-		} else {
-			res.status(400).json({
-				status: 400,
-				ok: false,
-				data: "Error"
-			})
-		}
-	} catch (err) {
-		res.status(500).json({
-			status: 500,
-			ok: false,
-			data: err
-		})
 	}
 })
 
