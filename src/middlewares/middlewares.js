@@ -41,7 +41,24 @@ function mailPassword(mail, token) {
 		from: 'jobscrappers@gmail.com',
 		to: mail,
 		subject: 'RECUPERA TU CONTRASEÑA',
-		text: `Puedes actualizar tu contraseña clicando en este enlace: http://localhost:3000/actualizar?tok=${token}.`
+		html: `
+		<table border="0" cellpadding="0" cellspacing="0" width="600px" margin="20px auto" background-color="#5BA092" bgcolor="#5BA092">
+			<tr height="200px">  
+			<td bgcolor="" width="600px">
+					<h1 style="color:#FDFDFD; text-align:center"> ¡Vaya! Parece que olvidaste tu contraseña </h1>
+					<h3 style="color:#FDFDFD; text-align:center">
+					Pulsa en 
+							<a href="http://localhost:3000/actualizar?tok=${token}" style="color:#E3562A">éste enlace</a> 
+							para recuperarla.
+					</h3>
+					</td>
+			</tr>
+			<tr bgcolor="#fff">
+					<td style="text-align:center">
+							<p style="color: #000">¡Gracias por confiar en Coursenine!</p>
+					</td>
+			</tr>
+		</table>`
 	};
 
 	transporter.sendMail(mailOptions, function (error, info) {
