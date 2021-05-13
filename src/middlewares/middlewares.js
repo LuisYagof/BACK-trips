@@ -38,7 +38,7 @@ function mailPassword(mail, token) {
 	});
 
 	let mailOptions = {
-		from: 'jobscrappers@gmail.com',
+		from: 'coursenineapp@gmail.com',
 		to: mail,
 		subject: 'RECUPERA TU CONTRASEÑA',
 		html: `

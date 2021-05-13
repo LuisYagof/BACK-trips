@@ -9,7 +9,7 @@ const { createToken, hash, randomString, decodeToken, emailIsValid,
 
 const { linkedin } = require('../queries/linkedin')
 
-const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
+const { newStudent, newTeacher, logUser, logout, verification, recoverAccount, recoverPass,
 	newPass, updateUser, searchAll, keywords, getReviews, newReview, getCourseReviews, showFavs,
 	newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
 
@@ -148,6 +148,32 @@ server.put('/logout', async (req, res) => {
 				url: '/',
 				data: err,
 				msg: "Ya has salido"
+			})
+		}
+	}
+})
+
+// ------------------------------------------------------------------VERIFY TOKEN
+
+server.get('/verification', async (req, res) => {
+	let token = req.headers.authorization.split(" ")[1]
+	try {
+		const PAYLOAD = decodeToken(token)
+		const SQLresponse = await verification(PAYLOAD, token)
+		if (SQLresponse[0]) {
+			res.status(200).json({
+				status: 200,
+				ok: true,
+				msg: "Estás logado.",
+				user: { rol: PAYLOAD.rol, email: PAYLOAD.email, nombre: PAYLOAD.nombre }
+			})
+		}
+	} catch (err) {
+		if (err) {
+			res.status(500).json({
+				status: 500,
+				ok: false,
+				msg: "No estás logado"
 			})
 		}
 	}

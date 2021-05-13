@@ -47,6 +47,24 @@ function logout(payload, newSecret, rol) {
     });
 }
 
+// -----------------------------------------------------------VERIFY TOKEN
+
+function verification(payload, token) {
+    return new Promise((resolve, reject) => {
+        DB.query(`SELECT secreto, id, nombre FROM ${payload.rol} WHERE email = "${payload.email}";`, (err, result) => {
+            if (err)
+                return reject(err);
+            try {
+                if (verifyToken(token, result[0].secreto)) {
+                    resolve(result);
+                }
+            } catch (err) {
+                return reject(err)
+            }
+        })
+    })
+}
+
 // -----------------------------------------------------------PASSWORD
 
 function recoverAccount(email, newSecret, rol) {
@@ -278,6 +296,7 @@ module.exports = {
     newTeacher,
     logUser,
     logout,
+    verification,
     recoverAccount,
     recoverPass,
     newPass,
