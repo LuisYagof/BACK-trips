@@ -148,26 +148,6 @@ function keywords(curso) {
     });
 }
 
-// -----------------------------------------------------------GET REVIEWS
-
-function getReviews(curso) {
-    return new Promise((resolve, reject) => {
-        DB.query(`SELECT * FROM reviews WHERE curso = "${curso}";`, (err, result) => {
-            if (err)
-                return reject(err);
-            DB.query(`SELECT COUNT(id) FROM reviews WHERE curso = "${curso}";`, (e, r) => {
-                if (e)
-                    return reject(e);
-                let data = {
-                    reviews: result,
-                    reviewNum: Object.values(r[0])[0]
-                }
-                resolve(data);
-            });
-        })
-    });
-}
-
 // -----------------------------------------------------------NEW REVIEW
 
 
@@ -198,6 +178,39 @@ function newReview(body, payload, curso) {
         })
     }
     )
+}
+
+// -----------------------------------------------------------GET REVIEWS AND COUNTER
+
+function getReviews(curso) {
+    return new Promise((resolve, reject) => {
+        DB.query(`SELECT * FROM reviews WHERE curso = "${curso}";`, (err, result) => {
+            if (err)
+                return reject(err);
+            DB.query(`SELECT COUNT(id) FROM reviews WHERE curso = "${curso}";`, (e, r) => {
+                if (e)
+                    return reject(e);
+                let data = {
+                    reviews: result,
+                    reviewNum: Object.values(r[0])[0]
+                }
+                resolve(data);
+            });
+        })
+    });
+}
+
+// -----------------------------------------------------------GET ALL COURSE REVIEWS
+
+function getCourseReviews(curso) {
+    return new Promise((resolve, reject) => {
+        DB.query(`SELECT * FROM reviews WHERE curso = "${curso}";`, (err, result) => {
+            if (err)
+                return reject(err);
+                let data = result
+                resolve(data);
+        })
+    });
 }
 
 // -----------------------------------------------------------FAVS
@@ -271,8 +284,9 @@ module.exports = {
     updateUser,
     searchAll,
     keywords,
-    getReviews,
     newReview,
+    getReviews,
+    getCourseReviews,
     showFavs,
     newFav,
     deleteFav,

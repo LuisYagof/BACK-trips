@@ -404,6 +404,34 @@ server.post('/newReview/:curso', async (req, res) => {
     }
 })
 
+// ------------------------------------------------------------------GET ALL COURSE REVIEWS
+
+server.get('/searchReviews/:curso', async (req, res) => {
+    try {
+        const SQLresponse = await getCourseReviews(req.params.curso)
+        if (SQLresponse) {
+            res.status(200).json({
+                status: 200,
+                ok: true,
+                msg: "Reviews",
+                data: SQLresponse
+            })
+        } else {
+            res.status(400).json({
+                status: 400,
+                ok: false,
+                data: "Error"
+            })
+        }
+    } catch (err) {
+        res.status(500).json({
+            status: 500,
+            ok: false,
+            data: err
+        })
+    }
+})
+
 // -----------------------------------------------------------------SHOWFAV
 
 server.get('/showFavs', async (req, res) => {
