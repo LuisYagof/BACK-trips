@@ -10,8 +10,8 @@ const { createToken, hash, randomString, decodeToken, emailIsValid,
 const { linkedin } = require('../queries/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
-    newPass, updateUser, searchAll, keywords, getReviews, newReview, getCourseReviews, showFavs,
-    newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
+	newPass, updateUser, searchAll, keywords, getReviews, newReview, getCourseReviews, showFavs,
+	newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -41,7 +41,7 @@ server.post('/newStudent', async (req, res) => {
 				ok: true,
 				data: SQLresponse,
 				msg: "Registrado correctamente.",
-				token: await createToken(req.body.email, SQLresponse.insertId, "estudiantes", random, 172800),
+				token: await createToken(req.body.email, SQLresponse.insertId, "estudiantes", req.body.nombre, random, 172800),
 				user: { rol: "estudiantes", email: req.body.email, nombre: req.body.nombre }
 			})
 		} catch (err) {
@@ -72,7 +72,7 @@ server.post('/newTeacher', async (req, res) => {
 				ok: true,
 				data: SQLresponse,
 				msg: "Registrado correctamente",
-				token: await createToken(req.body.email, SQLresponse.insertId, "docentes", random, 172800),
+				token: await createToken(req.body.email, SQLresponse.insertId, "docentes", req.body.nombre, random, 172800),
 				user: { rol: "docentes", email: req.body.email, nombre: req.body.nombre }
 			})
 		} catch (err) {
@@ -104,7 +104,7 @@ server.post('/logUser/:rol', async (req, res) => {
 				ok: true,
 				data: SQLresponse,
 				msg: "Logado correctamente",
-				token: await createToken(SQLresponse[0].email, SQLresponse[0].id, req.params.rol, SQLresponse[0].secreto, 172800),
+				token: await createToken(SQLresponse[0].email, SQLresponse[0].id, req.params.rol, SQLresponse[0].id, SQLresponse[0].secreto, 172800),
 				user: { rol: req.params.rol, email: req.body.email, nombre: SQLresponse[0].nombre }
 			})
 		} catch (err) {
@@ -161,7 +161,7 @@ server.post('/recuperar/:rol', async (req, res) => {
 			let newSecret = randomString()
 			const SQLresponse = await recoverAccount(req.body.email, newSecret, req.params.rol)
 			if (SQLresponse.affectedRows > 0) {
-				let token = await createToken(req.body.email, "", req.params.rol, newSecret, 1800)
+				let token = await createToken(req.body.email, "", req.params.rol, "", newSecret, 1800)
 				const NODEMAILresp = await mailPassword(req.body.email, token)
 				res.status(200).json({
 					status: 200,
@@ -206,19 +206,16 @@ server.get('/reestablecer/:token', async (req, res) => {
 				status: 200,
 				ok: true,
 				msg: "Puedes introducir una nueva contraseña",
-				userMail: PAYLOAD.email,
-				rol: PAYLOAD.rol,
-				token: await createToken(PAYLOAD.email, SQLresponse[0].id, PAYLOAD.rol, SQLresponse[0].secreto, 172800)
+				token: await createToken(PAYLOAD.email, SQLresponse[0].id, PAYLOAD.rol, SQLresponse[0].nombre, SQLresponse[0].secreto, 172800),
+				user: { rol: PAYLOAD.rol, email: PAYLOAD.email, nombre: SQLresponse[0].nombre }
 			})
 		}
 	} catch (err) {
-		console.log(err);
 		if (err) {
 			res.status(500).json({
 				status: 500,
 				ok: false,
-				msg: "Token caducado",
-				url: '/recuperar'
+				msg: "Token caducado"
 			})
 		}
 	}
@@ -235,7 +232,7 @@ server.put('/newPass/:rol', async (req, res) => {
 					data: SQLresponse,
 					msg: "Contraseña modificada",
 					token: req.headers.authorization.split(" ")[1],
-					url: '/'
+					user: { rol: req.params.rol, email: req.body.email, nombre: req.body.email }
 				})
 			} else {
 				res.status(400).json({
@@ -407,29 +404,29 @@ server.post('/newReview/:curso', async (req, res) => {
 // ------------------------------------------------------------------GET ALL COURSE REVIEWS
 
 server.get('/searchReviews/:curso', async (req, res) => {
-    try {
-        const SQLresponse = await getCourseReviews(req.params.curso)
-        if (SQLresponse) {
-            res.status(200).json({
-                status: 200,
-                ok: true,
-                msg: "Reviews",
-                data: SQLresponse
-            })
-        } else {
-            res.status(400).json({
-                status: 400,
-                ok: false,
-                data: "Error"
-            })
-        }
-    } catch (err) {
-        res.status(500).json({
-            status: 500,
-            ok: false,
-            data: err
-        })
-    }
+	try {
+		const SQLresponse = await getCourseReviews(req.params.curso)
+		if (SQLresponse) {
+			res.status(200).json({
+				status: 200,
+				ok: true,
+				msg: "Reviews",
+				data: SQLresponse
+			})
+		} else {
+			res.status(400).json({
+				status: 400,
+				ok: false,
+				data: "Error"
+			})
+		}
+	} catch (err) {
+		res.status(500).json({
+			status: 500,
+			ok: false,
+			data: err
+		})
+	}
 })
 
 // -----------------------------------------------------------------SHOWFAV

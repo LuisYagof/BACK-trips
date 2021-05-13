@@ -207,8 +207,8 @@ function getCourseReviews(curso) {
         DB.query(`SELECT * FROM reviews WHERE curso = "${curso}";`, (err, result) => {
             if (err)
                 return reject(err);
-                let data = result
-                resolve(data);
+            let data = result
+            resolve(data);
         })
     });
 }

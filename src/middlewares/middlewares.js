@@ -16,8 +16,8 @@ function randomString() {
 	return cryptoRS({ length: 10, type: 'base64' })
 }
 
-function createToken(email, ID, rol, secret, expiration) {
-	return jwt.sign({ email: email, id: ID, rol: rol }, secret, { expiresIn: expiration })
+function createToken(email, ID, rol, nombre, secret, expiration) {
+	return jwt.sign({ email: email, id: ID, rol: rol, nombre: nombre }, secret, { expiresIn: expiration })
 }
 
 function decodeToken(token) {
