@@ -10,7 +10,7 @@ const { createToken, hash, randomString, decodeToken, emailIsValid,
 const { linkedin } = require('../queries/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, recoverAccount, recoverPass,
-    newPass, updateUser, searchAll, keywords, getReviews, newReview, showFavs,
+    newPass, updateUser, searchAll, keywords, getReviews, newReview, getCourseReviews, showFavs,
     newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
