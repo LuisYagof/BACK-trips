@@ -104,7 +104,7 @@ server.post('/logUser/:rol', async (req, res) => {
 				ok: true,
 				data: SQLresponse,
 				msg: "Logado correctamente",
-				token: await createToken(SQLresponse[0].email, SQLresponse[0].id, req.params.rol, SQLresponse[0].id, SQLresponse[0].secreto, 172800),
+				token: await createToken(SQLresponse[0].email, SQLresponse[0].id, req.params.rol, SQLresponse[0].nombre, SQLresponse[0].secreto, 172800),
 				user: { rol: req.params.rol, email: req.body.email, nombre: SQLresponse[0].nombre }
 			})
 		} catch (err) {
@@ -299,7 +299,7 @@ server.put('/updateUser', async (req, res) => {
 					ok: true,
 					data: SQLresponse,
 					msg: "Datos de usuario actualizados.",
-					token: await createToken(req.body.email, PAYLOAD.id, PAYLOAD.rol, newSecret, 172800),
+					token: await createToken(req.body.email, PAYLOAD.id, PAYLOAD.rol, PAYLOAD.nombre, newSecret, 172800),
 				})
 			} else {
 				res.status(400).json({
