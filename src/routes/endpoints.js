@@ -68,7 +68,7 @@ server.post('/newStudent', cors(corsOptions), async (req, res) => {
 	}
 })
 
-server.post('/newTeacher', async (req, res) => {
+server.post('/newTeacher', cors(corsOptions), async (req, res) => {
 	if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
 		try {
 			let random = randomString()
