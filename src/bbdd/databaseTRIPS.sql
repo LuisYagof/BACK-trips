@@ -1,6 +1,6 @@
-create database appcourses;
+create database coursenine;
 
-USE appcourses;
+USE coursenine;
 
 CREATE TABLE estudiantes(
 id INT PRIMARY KEY AUTO_INCREMENT,
