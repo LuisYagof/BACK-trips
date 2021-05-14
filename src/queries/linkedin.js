@@ -55,7 +55,7 @@ function linkedinPromise(arrKW, inter) {
     });
 }
 
-linkedinPromise(["SQL%20matplotlib", "r"], intervalos.semana)
+// linkedinPromise(["SQL%20matplotlib", "r"], intervalos.semana)
 
 module.exports = {
   linkedin, linkedinPromise

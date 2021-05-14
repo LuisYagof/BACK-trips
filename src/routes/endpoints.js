@@ -7,7 +7,7 @@ const axios = require('axios')
 const { createToken, hash, randomString, decodeToken, emailIsValid,
 	passIsValid, nameIsValid, mailPassword } = require("../middlewares/middlewares");
 
-const { linkedin } = require('../queries/linkedin')
+// const { linkedin } = require('../queries/linkedin')
 
 const { newStudent, newTeacher, logUser, logout, verification, recoverAccount, recoverPass,
 	newPass, updateUser, searchAll, keywords, getReviews, newReview, showFavs,
@@ -357,7 +357,7 @@ server.get('/dataAPI/:curso', async (req, res) => {
 	try {
 		const REVIEWS = await getReviews(req.params.curso)
 		const SQLresponse = await keywords(req.params.curso)
-		if (SQLresponse) {
+		if (SQLresponse.keys[0] && SQLresponse.profs[0]) {
 			const APIresponse = axios({
 				method: 'get',
 				url: `http://apidatatripu-env.eba-zb6ziaqv.eu-west-1.elasticbeanstalk.com/api/v1/courses/get_courses_simple`,
@@ -384,14 +384,15 @@ server.get('/dataAPI/:curso', async (req, res) => {
 			res.status(400).json({
 				status: 400,
 				ok: false,
-				data: "No hay datos"
+				msg: "No hay datos de empleo para este curso concreto."
 			})
 		}
 	} catch (err) {
 		res.status(500).json({
 			status: 500,
 			ok: false,
-			data: err
+			data: err,
+			msg: "Error en la base de datos."
 		})
 	}
 })
