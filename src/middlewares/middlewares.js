@@ -30,6 +30,11 @@ function verifyToken(token, secret) {
 
 function mailPassword(mail, token) {
 	const transporter = nodemailer.createTransport({
+		name: "CourseNine",
+		host: "coursenineapp.com",
+		port: 465,
+		pool: true,
+		secure: true,
 		service: 'gmail',
 		auth: {
 			user: process.env.USER,
