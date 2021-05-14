@@ -37,7 +37,7 @@ server.listen(listenPort,
 
 // ------------------------------------------------------------------SIGNUP
 
-server.post('/newStudent',cors(corsOptions), async (req, res) => {
+server.post('/newStudent', cors(corsOptions), async (req, res) => {
 	if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
 		try {
 			let random = randomString()
@@ -161,7 +161,7 @@ server.put('/logout', async (req, res) => {
 
 // ------------------------------------------------------------------VERIFY TOKEN
 
-server.get('/verification', async (req, res) => {
+server.get('/verification', cors(corsOptions), async (req, res) => {
 	let token = req.headers.authorization.split(" ")[1]
 	try {
 		const PAYLOAD = decodeToken(token)
