@@ -32,13 +32,16 @@ function mailPassword(mail, token) {
 	const transporter = nodemailer.createTransport({
 		name: "CourseNine",
 		host: "coursenineapp.com",
-		port: 465,
+		port: 25,
 		pool: true,
-		secure: true,
+		secure: false,
 		service: 'gmail',
 		auth: {
 			user: process.env.USER,
 			pass: process.env.PASS
+		},
+		tls: {
+			rejectUnauthorized: false
 		}
 	});
 
