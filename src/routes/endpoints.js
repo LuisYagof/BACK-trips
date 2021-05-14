@@ -18,6 +18,12 @@ const { newStudent, newTeacher, logUser, logout, verification, recoverAccount, r
 const server = express()
 const listenPort = process.env.PORT || 443;
 server.use(cors())
+const corsOptions = {
+	origin: "*",
+	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+	preflightContinue: false,
+	optionsSuccessStatus: 204
+}
 
 // -----------------------------PARSEADOR DE EXPRESS
 
@@ -31,7 +37,7 @@ server.listen(listenPort,
 
 // ------------------------------------------------------------------SIGNUP
 
-server.post('/newStudent', async (req, res) => {
+server.post('/newStudent',cors(corsOptions), async (req, res) => {
 	if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
 		try {
 			let random = randomString()
