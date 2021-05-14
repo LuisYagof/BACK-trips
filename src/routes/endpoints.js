@@ -539,6 +539,7 @@ server.post('/newCourse', async (req, res) => {
 				status: 200,
 				ok: true,
 				msg: "Curso guardado correctamente",
+				id: SQLresponse.insertId
 			})
 		} else {
 			res.status(400).json({
