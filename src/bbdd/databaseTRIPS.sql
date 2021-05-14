@@ -94,7 +94,7 @@ FOREIGN KEY (curso) REFERENCES cursos(id)
 ALTER TABLE reviews ADD UNIQUE INDEX(estudiante, curso);
 
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Pedro", "Carbón", "pedrocarbon@hotmail.com", "password1", "qwertyn123+");
+VALUES ("Pedro", "Castera", "pedro@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
 VALUES ("Loli", "Start", "lolistart@hotmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
@@ -104,7 +104,7 @@ VALUES ("Carlos", "Fernández", "carlosfe@hotmail.com", "password1", "qwertyn123
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
 VALUES ("Jesús María", "de los Santos", "jesusmarisan@gmail.com", "password1", "qwertyn123+");
 INSERT INTO estudiantes(nombre, apellido, email, pass, secreto)
-VALUES ("Lluvia", "Dorada", "lluviado@hotmail.com", "password1", "qwertyn123+");
+VALUES ("Julia", "Dominguez", "julia@hotmail.com", "password1", "qwertyn123+");
 
 INSERT INTO categorias(descripcion)
 VALUES ("Desarrollo Web");
