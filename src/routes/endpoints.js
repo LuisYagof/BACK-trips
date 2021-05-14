@@ -16,7 +16,7 @@ const { newStudent, newTeacher, logUser, logout, verification, recoverAccount, r
 // -------------------------------SERVIDOR Y PUERTOS
 
 const server = express()
-const listenPort = process.env.PORT || 8080;
+const listenPort = process.env.PORT || 443;
 server.use(cors())
 
 // -----------------------------PARSEADOR DE EXPRESS
