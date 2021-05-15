@@ -579,7 +579,8 @@ server.get('/hola', async (req, res) => {
 			res.status(500).json({
 				status: 500,
 				ok: false,
-				msg: "No hola"
+				msg: "No hola",
+				error: err
 			})
 	}
 })
