@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/LuisYagof/BACK-trips/issues"
   },
-  "homepage": "https://github.com/LuisYagof/BACK-trips#readme"
+  "homepage": "https://github.com/LuisYagof/BACK-trips#readme",
+  "engines": {
+    "node": "14.16.0"
+  }
 }
