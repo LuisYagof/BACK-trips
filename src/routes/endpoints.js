@@ -564,3 +564,22 @@ server.post('/newCourse', async (req, res) => {
 			})
 	}
 })
+
+// ----------------------------------------------------------------HOLA
+
+server.get('/hola', async (req, res) => {
+	try {
+		res.status(200).json({
+			status: 200,
+			ok: true,
+			msg: "Hola",
+		})
+	} catch (err) {
+		if (err.errno)
+			res.status(500).json({
+				status: 500,
+				ok: false,
+				msg: "No hola"
+			})
+	}
+})
