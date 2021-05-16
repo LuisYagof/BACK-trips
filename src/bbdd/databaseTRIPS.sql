@@ -685,30 +685,3 @@ INSERT INTO profesionesCursos(curso, profesion)
 VALUES (40, 2);
 INSERT INTO profesionesCursos(curso, profesion)
 VALUES (40, 3);
-
--- -----------------------------------------------------------QUERIES
-
--- SACAR CURSOS POR CATEGORÍA ORDENADOS POR PUNTUACIÓN 
-select * from cursos where categoria = 5 order by media;
-
--- INSERTAR REVIEW
-insert into reviews (estudiante, curso, descripcion, valoracion) values (2, 4, "Regular", 3);
-
--- CALCULAR MEDIA DE REVIEWS
-SELECT AVG(valoracion)
-FROM reviews
-WHERE curso = 4;
-
--- ACTUALIZAR LA MEDIA ARITMÉTICA EN TABLA CURSOS
-update cursos set media = 4 where id = 4;
-
--- SACAR MATCHES DE CATEGORÍAS DE UN CURSO CONCRETO 
-select keyword from keywordsCursos where curso = 4;
-
--- SACAR LAS KEYWORDS DE UN CURSO
-SELECT descripcion
-FROM keywords
-INNER JOIN keywordsCursos
-ON keywords.id = keywordsCursos.keyword
-where curso = 2;
-
