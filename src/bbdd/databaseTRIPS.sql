@@ -125,7 +125,7 @@ VALUES ("Fernando Alfaro", "alfarogr@hotmail.com", "password1", "qwerty123+", "S
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Roberto Borroso", "rborroso@hotmail.com", "password1", "qwerty123+", "Soy diseñador y front-end developer", "linkedin.com/roborroso");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
-VALUES ("Jose Luis", "zellfhirot@hotmail.com", "password1", "qwerty123+", "Soy la máquina de los endpoints", "linkedin.com/zellfhirot");
+VALUES ("Jose Luis López", "zellfhirot@hotmail.com", "password1", "qwerty123+", "Soy la máquina de los endpoints", "linkedin.com/zellfhirot");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Luis Fernández", "luisyagofdez@gmail.com", "password1", "qwerty123+", "Desarrollador Full-Stack apasionado de la lógica computacional.", "linkedin.com/luisyagofdez");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
@@ -139,7 +139,7 @@ VALUES ("Alberto Esparza", "albertoesparza@gmail.com", "password1", "qwerty123+"
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("The Bridge", "thebridge@tech.com", "password1", "qwerty123+", "Amante de plataformas digitales y apasionado de la tecnología.", "linkedin.com/eduardomelano");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
-VALUES ("María Javiérez", "mariajavierez@gmail.com", "password1", "qwerty123+", "Soy profesora universitaria y una gran defensora de la formación online.", "linkedin.com/maria_javierez");
+VALUES ("María Castaño", "mariacastano@gmail.com", "password1", "qwerty123+", "Soy profesora universitaria y una gran defensora de la formación online.", "linkedin.com/maria_castano");
 
 INSERT INTO keywords(descripcion)
 VALUES ("React");
@@ -685,30 +685,3 @@ INSERT INTO profesionesCursos(curso, profesion)
 VALUES (40, 2);
 INSERT INTO profesionesCursos(curso, profesion)
 VALUES (40, 3);
-
--- -----------------------------------------------------------QUERIES
-
--- SACAR CURSOS POR CATEGORÍA ORDENADOS POR PUNTUACIÓN 
-select * from cursos where categoria = 5 order by media;
-
--- INSERTAR REVIEW
-insert into reviews (estudiante, curso, descripcion, valoracion) values (2, 4, "Regular", 3);
-
--- CALCULAR MEDIA DE REVIEWS
-SELECT AVG(valoracion)
-FROM reviews
-WHERE curso = 4;
-
--- ACTUALIZAR LA MEDIA ARITMÉTICA EN TABLA CURSOS
-update cursos set media = 4 where id = 4;
-
--- SACAR MATCHES DE CATEGORÍAS DE UN CURSO CONCRETO 
-select keyword from keywordsCursos where curso = 4;
-
--- SACAR LAS KEYWORDS DE UN CURSO
-SELECT descripcion
-FROM keywords
-INNER JOIN keywordsCursos
-ON keywords.id = keywordsCursos.keyword
-where curso = 2;
-
