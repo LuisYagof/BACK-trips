@@ -18,12 +18,6 @@ const { newStudent, newTeacher, logUser, logout, verification, recoverAccount, r
 const server = express()
 const listenPort = process.env.PORT || 443;
 server.use(cors())
-// const corsOptions = {
-// 	origin: "*",
-// 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-// 	preflightContinue: false,
-// 	optionsSuccessStatus: 204
-// }
 
 // -----------------------------PARSEADOR DE EXPRESS
 
@@ -151,7 +145,6 @@ server.put('/logout', async (req, res) => {
 			res.status(500).json({
 				status: 500,
 				ok: false,
-				url: '/',
 				data: err,
 				msg: "Ya has salido."
 			})
@@ -461,10 +454,7 @@ server.get('/showFavs', async (req, res) => {
 			status: 403,
 			ok: false,
 			data: err,
-
-			// ESTO VA A SER DISTINTO --> SOLO LOGADO SE VA A ACCEDER A ESTE ENDPOINT
 			msg: "Inicia sesión para ver tus favoritos.",
-			url: '/login'
 		})
 	}
 })
