@@ -56,7 +56,7 @@ function mailPassword(mail, token) {
 					<h1 style="color:#FDFDFD; text-align:center"> ¡Vaya! Parece que olvidaste tu contraseña </h1>
 					<h3 style="color:#FDFDFD; text-align:center">
 					Pulsa en 
-							<a href="http://localhost:3000/actualizar?tok=${token}" style="color:#E3562A">éste enlace</a> 
+							<a href="https://course-nine.herokuapp.com/actualizar?tok=${token}" style="color:#E3562A">éste enlace</a> 
 							para recuperarla.
 					</h3>
 					</td>

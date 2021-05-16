@@ -18,12 +18,12 @@ const { newStudent, newTeacher, logUser, logout, verification, recoverAccount, r
 const server = express()
 const listenPort = process.env.PORT || 443;
 server.use(cors())
-const corsOptions = {
-	origin: "*",
-	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-	preflightContinue: false,
-	optionsSuccessStatus: 204
-}
+// const corsOptions = {
+// 	origin: "*",
+// 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+// 	preflightContinue: false,
+// 	optionsSuccessStatus: 204
+// }
 
 // -----------------------------PARSEADOR DE EXPRESS
 
@@ -37,7 +37,7 @@ server.listen(listenPort,
 
 // ------------------------------------------------------------------SIGNUP
 
-server.post('/newStudent', cors(corsOptions), async (req, res) => {
+server.post('/newStudent', async (req, res) => {
 	if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
 		try {
 			let random = randomString()
@@ -55,7 +55,7 @@ server.post('/newStudent', cors(corsOptions), async (req, res) => {
 				res.status(500).json({
 					status: 500,
 					ok: false,
-					msg: "Error en base de datos",
+					msg: "Error en base de datos.",
 					data: err
 				})
 		}
@@ -68,7 +68,7 @@ server.post('/newStudent', cors(corsOptions), async (req, res) => {
 	}
 })
 
-server.post('/newTeacher', cors(corsOptions), async (req, res) => {
+server.post('/newTeacher', async (req, res) => {
 	if (emailIsValid(req.body.email) && passIsValid(req.body.pass) && nameIsValid(req.body.nombre)) {
 		try {
 			let random = randomString()
@@ -77,7 +77,7 @@ server.post('/newTeacher', cors(corsOptions), async (req, res) => {
 				status: 200,
 				ok: true,
 				data: SQLresponse,
-				msg: "Registrado correctamente",
+				msg: "Registrado correctamente.",
 				token: await createToken(req.body.email, SQLresponse.insertId, "docentes", req.body.nombre, random, 172800),
 				user: { rol: "docentes", email: req.body.email, nombre: req.body.nombre }
 			})
@@ -86,7 +86,7 @@ server.post('/newTeacher', cors(corsOptions), async (req, res) => {
 				res.status(500).json({
 					status: 500,
 					ok: false,
-					msg: "Error en base de datos",
+					msg: "Error en base de datos.",
 					data: err
 				})
 		}
@@ -119,7 +119,7 @@ server.post('/logUser/:rol', async (req, res) => {
 					status: 500,
 					ok: false,
 					data: err,
-					msg: "Email o contraseña incorrectos"
+					msg: "Email o contraseña incorrectos."
 				})
 			}
 		}
@@ -127,7 +127,7 @@ server.post('/logUser/:rol', async (req, res) => {
 		res.status(406).json({
 			status: 406,
 			ok: false,
-			msg: "Email inválido. La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número"
+			msg: "Email inválido. La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número."
 		})
 	}
 })
@@ -144,7 +144,7 @@ server.put('/logout', async (req, res) => {
 			status: 200,
 			ok: true,
 			data: SQLresponse,
-			msg: "Deslogado correctamente"
+			msg: "Deslogado correctamente."
 		})
 	} catch (err) {
 		if (err) {
@@ -153,7 +153,7 @@ server.put('/logout', async (req, res) => {
 				ok: false,
 				url: '/',
 				data: err,
-				msg: "Ya has salido"
+				msg: "Ya has salido."
 			})
 		}
 	}
@@ -161,7 +161,7 @@ server.put('/logout', async (req, res) => {
 
 // ------------------------------------------------------------------VERIFY TOKEN
 
-server.get('/verification', cors(corsOptions), async (req, res) => {
+server.get('/verification', async (req, res) => {
 	let token = req.headers.authorization.split(" ")[1]
 	try {
 		const PAYLOAD = decodeToken(token)
@@ -179,7 +179,7 @@ server.get('/verification', cors(corsOptions), async (req, res) => {
 			res.status(500).json({
 				status: 500,
 				ok: false,
-				msg: "No estás logado"
+				msg: "No estás logado."
 			})
 		}
 	}
@@ -206,7 +206,7 @@ server.post('/recuperar/:rol', async (req, res) => {
 					status: 400,
 					ok: false,
 					data: SQLresponse,
-					msg: "Mail incorrecto"
+					msg: "Mail incorrecto."
 				})
 			}
 		} catch (err) {
@@ -215,7 +215,7 @@ server.post('/recuperar/:rol', async (req, res) => {
 					status: 500,
 					ok: false,
 					data: err,
-					msg: "Error en base de datos"
+					msg: "Error en base de datos."
 				})
 			}
 		}
@@ -237,7 +237,7 @@ server.get('/reestablecer/:token', async (req, res) => {
 			res.status(200).json({
 				status: 200,
 				ok: true,
-				msg: "Puedes introducir una nueva contraseña",
+				msg: "Puedes introducir una nueva contraseña.",
 				token: await createToken(PAYLOAD.email, SQLresponse[0].id, PAYLOAD.rol, SQLresponse[0].nombre, SQLresponse[0].secreto, 172800),
 				user: { rol: PAYLOAD.rol, email: PAYLOAD.email, nombre: SQLresponse[0].nombre }
 			})
@@ -247,7 +247,7 @@ server.get('/reestablecer/:token', async (req, res) => {
 			res.status(500).json({
 				status: 500,
 				ok: false,
-				msg: "Token caducado"
+				msg: "Token caducado."
 			})
 		}
 	}
@@ -262,7 +262,7 @@ server.put('/newPass/:rol', async (req, res) => {
 					status: 200,
 					ok: true,
 					data: SQLresponse,
-					msg: "Contraseña modificada",
+					msg: "Contraseña modificada.",
 					token: req.headers.authorization.split(" ")[1],
 					user: { rol: req.params.rol, email: req.body.email, nombre: req.body.email }
 				})
@@ -271,21 +271,21 @@ server.put('/newPass/:rol', async (req, res) => {
 					status: 400,
 					ok: false,
 					data: SQLresponse,
-					msg: "Imposible cambiar contraseña"
+					msg: "Imposible cambiar contraseña."
 				})
 			}
 		} catch (err) {
 			res.status(500).json({
 				status: 500,
 				ok: false,
-				msg: "Error de base de datos"
+				msg: "Error de base de datos."
 			})
 		}
 	} else {
 		res.status(406).json({
 			status: 406,
 			ok: false,
-			msg: "La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número"
+			msg: "La contraseña debe contener mínimo 8 caracteres, incluyendo una letra y un número."
 		})
 	}
 })
@@ -319,7 +319,7 @@ server.put('/updateUser', async (req, res) => {
 			res.status(500).json({
 				status: 500,
 				ok: false,
-				msg: "Error de base de datos"
+				msg: "Error de base de datos."
 			})
 		}
 	} else {
@@ -340,7 +340,7 @@ server.get('/searchAll', async (req, res) => {
 			res.status(200).json({
 				status: 200,
 				ok: true,
-				msg: "Cursos y docentes",
+				msg: "Cursos y docentes.",
 				data: SQLresponse
 			})
 		} else {
@@ -414,13 +414,13 @@ server.post('/newReview/:curso', async (req, res) => {
 			res.status(200).json({
 				status: 200,
 				ok: true,
-				msg: "Review guardada correctamente",
+				msg: "Review guardada correctamente.",
 			})
 		} else {
 			res.status(400).json({
 				status: 400,
 				ok: false,
-				msg: "Review previamente guardada",
+				msg: "Review previamente guardada.",
 			})
 		}
 	} catch (err) {
@@ -429,7 +429,7 @@ server.post('/newReview/:curso', async (req, res) => {
 				status: 500,
 				ok: false,
 				data: err.sqlMessage,
-				msg: "Error en base de datos"
+				msg: "Error en base de datos."
 			})
 	}
 })
@@ -453,7 +453,7 @@ server.get('/showFavs', async (req, res) => {
 				status: 400,
 				ok: false,
 				data: SQLresponse,
-				msg: "Imposible recuperar favoritos"
+				msg: "Imposible recuperar favoritos."
 			})
 		}
 	} catch (err) {
@@ -463,7 +463,7 @@ server.get('/showFavs', async (req, res) => {
 			data: err,
 
 			// ESTO VA A SER DISTINTO --> SOLO LOGADO SE VA A ACCEDER A ESTE ENDPOINT
-			msg: "Inicia sesión para ver tus favoritos",
+			msg: "Inicia sesión para ver tus favoritos.",
 			url: '/login'
 		})
 	}
@@ -480,13 +480,13 @@ server.post('/newFav/:curso', async (req, res) => {
 			res.status(200).json({
 				status: 200,
 				ok: true,
-				msg: "Favorito guardado correctamente",
+				msg: "Favorito guardado correctamente.",
 			})
 		} else {
 			res.status(400).json({
 				status: 400,
 				ok: false,
-				msg: "Favorito previamente guardado",
+				msg: "Favorito previamente guardado.",
 			})
 		}
 	} catch (err) {
@@ -495,7 +495,7 @@ server.post('/newFav/:curso', async (req, res) => {
 				status: 500,
 				ok: false,
 				data: err.sqlMessage,
-				msg: "Error en base de datos"
+				msg: "Error en base de datos."
 			})
 	}
 })
@@ -512,14 +512,13 @@ server.delete('/deleteFav/:curso', async (req, res) => {
 				status: 200,
 				ok: true,
 				msg: "Favorito borrado correctamente.",
-				url: '/favoritos'
 			})
 		} else {
 			res.status(400).json({
 				status: 400,
 				ok: false,
 				data: SQLresponse,
-				msg: "Imposible borrar"
+				msg: "Imposible borrar."
 			})
 		}
 	} catch (err) {
@@ -528,7 +527,7 @@ server.delete('/deleteFav/:curso', async (req, res) => {
 				status: 500,
 				ok: false,
 				data: err.sqlMessage,
-				msg: "Error en base de datos"
+				msg: "Error en base de datos."
 			})
 	}
 })
@@ -544,14 +543,14 @@ server.post('/newCourse', async (req, res) => {
 			res.status(200).json({
 				status: 200,
 				ok: true,
-				msg: "Curso guardado correctamente",
+				msg: "Curso guardado correctamente.",
 				id: SQLresponse.insertId
 			})
 		} else {
 			res.status(400).json({
 				status: 400,
 				ok: false,
-				msg: "El curso ya existe",
+				msg: "No se pudo añadir curso. Inténtelo de nuevo.",
 			})
 		}
 	} catch (err) {
@@ -560,27 +559,7 @@ server.post('/newCourse', async (req, res) => {
 				status: 500,
 				ok: false,
 				data: err.sqlMessage,
-				msg: "Error en base de datos"
-			})
-	}
-})
-
-// ----------------------------------------------------------------HOLA
-
-server.get('/hola', async (req, res) => {
-	try {
-		res.status(200).json({
-			status: 200,
-			ok: true,
-			msg: "Hola",
-		})
-	} catch (err) {
-		if (err.errno)
-			res.status(500).json({
-				status: 500,
-				ok: false,
-				msg: "No hola",
-				error: err
+				msg: "Error en base de datos."
 			})
 	}
 })
