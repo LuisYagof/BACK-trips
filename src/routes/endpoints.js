@@ -564,7 +564,7 @@ server.get('/keys-profs', async (req, res) => {
 			res.status(200).json({
 				status: 200,
 				ok: true,
-				msg: "Todos los resultados.",
+				msg: "Todas las palabras clave y profesiones.",
 				keys: SQLresponse.keys,
 				profs: SQLresponse.profs
 			})
