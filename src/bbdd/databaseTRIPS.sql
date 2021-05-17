@@ -127,7 +127,7 @@ VALUES ("Roberto Borroso", "rborroso@hotmail.com", "password1", "qwerty123+", "S
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Jose Luis López", "zellfhirot@hotmail.com", "password1", "qwerty123+", "Soy la máquina de los endpoints", "linkedin.com/zellfhirot");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
-VALUES ("Luis Fernández", "luisyagofdez@gmail.com", "password1", "qwerty123+", "Desarrollador Full-Stack apasionado de la lógica computacional.", "linkedin.com/luisyagofdez");
+VALUES ("Luis Fernández", "luisyagofdez@mail.com", "password1", "qwerty123+", "Desarrollador Full-Stack apasionado de la lógica computacional.", "linkedin.com/luisyagofdez");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("Sol Jiménez", "soljimenez@gmail.com", "password1", "qwerty123+", "Creativa y resolutiva", "linkedin.com/soljimenez");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
@@ -139,7 +139,7 @@ VALUES ("Alberto Esparza", "albertoesparza@gmail.com", "password1", "qwerty123+"
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
 VALUES ("The Bridge", "thebridge@tech.com", "password1", "qwerty123+", "Amante de plataformas digitales y apasionado de la tecnología.", "linkedin.com/eduardomelano");
 INSERT INTO docentes(nombre, email, pass, secreto, descripcion, enlace) 
-VALUES ("María Castaño", "mariacastano@gmail.com", "password1", "qwerty123+", "Soy profesora universitaria y una gran defensora de la formación online.", "linkedin.com/maria_castano");
+VALUES ("María Castañón", "mariacastanon@gmail.com", "password1", "qwerty123+", "Soy profesora universitaria y una gran defensora de la formación online.", "linkedin.com/maria_castanon");
 
 INSERT INTO keywords(descripcion)
 VALUES ("React");
