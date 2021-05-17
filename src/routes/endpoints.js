@@ -11,7 +11,7 @@ const { createToken, hash, randomString, decodeToken, emailIsValid,
 
 const { newStudent, newTeacher, logUser, logout, verification, recoverAccount, recoverPass,
 	newPass, updateUser, searchAll, keywords, getReviews, newReview, showFavs,
-	newFav, deleteFav, newCourse } = require("../queries/SQLqueries")
+	newFav, deleteFav, newCourse, keysProfs } = require("../queries/SQLqueries")
 
 // -------------------------------SERVIDOR Y PUERTOS
 
@@ -551,5 +551,35 @@ server.post('/newCourse', async (req, res) => {
 				data: err.sqlMessage,
 				msg: "Error en base de datos."
 			})
+	}
+})
+
+
+// ----------------------------------------------------------KEYS & PROFS
+
+server.get('/keys-profs', async (req, res) => {
+	try {
+		const SQLresponse = await keysProfs()
+		if (SQLresponse) {
+			res.status(200).json({
+				status: 200,
+				ok: true,
+				msg: "Todos los resultados.",
+				keys: SQLresponse.keys,
+				profs: SQLresponse.profs
+			})
+		} else {
+			res.status(400).json({
+				status: 400,
+				ok: false,
+				data: "Error."
+			})
+		}
+	} catch (err) {
+		res.status(500).json({
+			status: 500,
+			ok: false,
+			data: err
+		})
 	}
 })

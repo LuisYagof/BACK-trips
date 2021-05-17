@@ -268,13 +268,73 @@ function deleteFav(idCurso, idUser) {
 
 function newCourse(body, docenteId) {
     return new Promise((resolve, reject) => {
-        DB.query(`INSERT INTO cursos (nombre, descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen, fecha) VALUES ( "${body.nombre}", "${body.descripcion}", "${body.enlace}", "${docenteId}", "${body.precio}", "${body.duracion}", "${body.idioma}", "${body.categoria}", "${body.bolsaEmpleo}", "${body.certificado}", 0, "${body.imagen}", "${body.fecha}");`, (err, result) => {
-            if (err)
-                return reject(err);
-            resolve(result);
+        DB.query(`INSERT INTO cursos (nombre, descripcion, enlace, docente, precio, duracion, idioma, categoria, bolsaEmpleo, certificado, media, imagen, fecha) VALUES ( "${body.nombre}", "${body.descripcion}", "${body.enlace}", "${docenteId}", "${body.precio}", "${body.duracion}", "${body.idioma}", "${body.categoria}", "${body.bolsaEmpleo}", "${body.certificado}", 0, "${body.imagen}", "${body.fecha}");`, (err1, res1) => {
+            if (err1)
+                return reject(err1);
+            body.keys.map(key => {
+                if (key.id === null) {
+                    DB.query(`INSERT INTO keywords(descripcion) VALUES ("${key.descripcion}");`, (err2, res2) => {
+                        if (err2)
+                            return reject(err2);
+                        DB.query(`INSERT INTO keywordsCursos(curso, keyword) VALUES ("${res1.insertId}", "${res2.insertId}"); `, (err3, res3) => {
+                            if (err3)
+                                return reject(err3);
+                        })
+                    })
+                } else {
+                    DB.query(`INSERT INTO keywordsCursos(curso, keyword) VALUES ("${res1.insertId}", "${key.id}"); `, (err4, res4) => {
+                        if (err4)
+                            return reject(err4)
+                    })
+                }
+            })
+            body.profs.map(prof => {
+                if (prof.id === null) {
+                    DB.query(`INSERT INTO profesiones(descripcion) VALUES ("${prof.descripcion}");`, (err5, res5) => {
+                        if (err5)
+                            return reject(err5);
+                        DB.query(`INSERT INTO profesionesCursos(curso, profesion) VALUES ("${res1.insertId}", "${res5.insertId}"); `, (err6, res6) => {
+                            if (err6)
+                                return reject(err6);
+                        })
+                    })
+                } else {
+                    DB.query(`INSERT INTO profesionesCursos(curso, profesion) VALUES ("${res1.insertId}", "${prof.id}"); `, (err7, res7) => {
+                        if (err7)
+                            return reject(err7)
+                    })
+                }
+            })
+            resolve(res1);
         });
     });
 }
+
+// -------------------------------------------------------KEYS & PROFS
+
+function keysProfs() {
+    return new Promise((resolve, reject) => {
+        DB.query(
+            `SELECT * FROM keywords;`,
+            (err, result) => {
+                if (err)
+                    return reject(err);
+                DB.query(
+                    `SELECT * FROM profesiones;`,
+                    (e, res) => {
+                        if (e)
+                            return reject(e);
+                        let data = {
+                            keys: result,
+                            profs: res
+                        }
+                        resolve(data);
+                    })
+
+            });
+    });
+}
+
 
 // ---------------------------EXPORTS
 
@@ -295,5 +355,6 @@ module.exports = {
     showFavs,
     newFav,
     deleteFav,
-    newCourse
+    newCourse,
+    keysProfs
 };
